@@ -1,7 +1,12 @@
 <header>
-  <div class="ps-logo" (click)="redirectHome()">
+  <div
+    class="ps-logo"
+    (click)="redirectHome()"
+    itemscope
+    itemtype="http://schema.org/LocalBusiness"
+  >
     <div>
-      <h1>Printing Solutions</h1>
+      <h1 itemprop="name">Printing Solutions</h1>
     </div>
     <div class="dots">
       <div class="dot lightblue cyan" (click)="changeColor('cyan')"></div>
