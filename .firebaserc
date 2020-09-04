@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "printing-solutions-co": {
+      "hosting": {
+        "ps-page": [
+          "printing-solutions-co"
+        ]
+      }
+    }
+  }
+}
