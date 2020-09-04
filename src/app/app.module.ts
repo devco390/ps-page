@@ -9,6 +9,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CallToActionsComponent } from './components/call-to-actions/call-to-actions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CardsModule } from './components/cards/cards.module';
+import { BackgroundComponent } from './components/background/background.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CardsModule } from './components/cards/cards.module';
     HeaderComponent,
     SidebarComponent,
     CallToActionsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    BackgroundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
