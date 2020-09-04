@@ -1,0 +1,28 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+.ps-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  &__call-to-actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.text-info {
+  width: 300px;
+  padding-top: 2rem;
+  p {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: "Book Antiqua";
+    font-family: "Times New Roman";
+    margin: 0;
+    padding: 0;
+  }
+}

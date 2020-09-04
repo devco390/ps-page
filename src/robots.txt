@@ -1,0 +1,2 @@
+Sitemap: https://www.printingsolutions.com.co/sitemap.xml
+User-agent: *

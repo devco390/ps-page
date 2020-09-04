@@ -1,0 +1,30 @@
+.ps-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #1d1d1b;
+    border-radius: 4px;
+    height: 100%;
+    .ps-main {
+      padding: 1rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      flex: 1 1 auto;
+    }
+  }
+}
+
+.image {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+}

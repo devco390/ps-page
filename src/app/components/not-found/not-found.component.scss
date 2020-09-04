@@ -1,0 +1,55 @@
+.ps-page-not-found {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__advice {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    a {
+      text-decoration: none;
+      padding-top: 1rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    h1,
+    h2,
+    a,
+    a:active,
+    a:focus,
+    a:visited {
+      color: #ffffff;
+      font-weight: normal;
+    }
+    h1 {
+      font-size: 4rem;
+      padding: 0;
+      margin: 1rem;
+    }
+    h2 {
+      font-size: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  &__illustration {
+    width: 300px;
+    height: 150px;
+    display: inline-flex;
+    .icon-moon {
+      background: url("src/assets/images/moon.svg") no-repeat;
+      background-size: contain;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,209 @@
+:host {
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.cards-container {
+  background-color: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  .card {
+    display: inline-flex;
+    font-family: "Book Antiqua";
+    width: 400px;
+    min-width: 400px;
+    height: 200px;
+    border: 1px solid #1d1d1b;
+    margin: 1rem;
+    padding: 1rem;
+    position: relative;
+    &.card-one {
+      background-color: #1d1d1b;
+    }
+    &.card-two {
+      background-color: #1d1d1b;
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .logo-container {
+        background-color: #1d1d1b;
+        width: 100%;
+        height: 51px;
+        display: flex;
+        justify-content: flex-end;
+
+        .logo {
+          padding-left: 1rem;
+        }
+        .header__title {
+          font-size: 1rem;
+        }
+        .dot {
+          height: 4px;
+          width: 4px;
+          margin-left: 2px;
+        }
+      }
+      .dot {
+        box-shadow: 0 0 0 0.1px rgba(29, 29, 27, 0.1);
+      }
+      .post-it {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        top: 60px;
+        &--cyan {
+          left: 2rem;
+        }
+        &--yellow {
+          left: 4rem;
+        }
+        &--magenta {
+          left: 6rem;
+        }
+      }
+      .icon-post-it {
+        height: 300px;
+        width: 300px;
+        position: absolute;
+        z-index: 10;
+      }
+      .icon-postit-cyan {
+        background: url("src/assets/images/post-it-cyan.svg") no-repeat;
+        background-size: 82%;
+        background-position-x: left;
+        background-position-y: top;
+        top: -3rem;
+        left: 0rem;
+      }
+      .icon-postit-yellow {
+        background: url("src/assets/images/post-it-yellow.svg") no-repeat;
+        background-size: 82%;
+        background-position-x: left;
+        background-position-y: top;
+        left: 2rem;
+        top: -2rem;
+      }
+      .icon-postit-magenta {
+        background: url("src/assets/images/post-it-magenta.svg") no-repeat;
+        background-size: 82%;
+        background-position-x: left;
+        background-position-y: top;
+        left: 4rem;
+        top: -1rem;
+      }
+      .card-footer {
+        border-top: 1px solid #1d1d1b;
+        background-color: #1d1d1b;
+        padding: 0;
+        display: flex;
+        right: 1rem;
+        bottom: 1rem;
+        justify-content: flex-end;
+        flex-direction: column;
+        position: absolute;
+        .brand {
+          padding-top: 0.25rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .icon {
+            height: 20px;
+            width: 30px;
+          }
+          .icon-epson {
+            background: url("src/assets/images/epson.svg") no-repeat center center;
+            background-size: 100%;
+          }
+          .icon-canon {
+            background: url("src/assets/images/canon.svg") no-repeat center center;
+            background-size: 100%;
+          }
+          .icon-hp {
+            background: url("src/assets/images/hp.svg") no-repeat center center;
+            background-size: 100%;
+            height: 15px;
+            width: 20px;
+          }
+          .icon-samsumg {
+            background: url("src/assets/images/samsumg.svg") no-repeat center center;
+            background-size: 100%;
+            width: 40px;
+          }
+        }
+      }
+    }
+    &__data {
+      color: #ffffff;
+      padding: 1rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-size: 10px;
+      width: 180px;
+      &--title {
+        border-bottom: 1px solid #ffffff;
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+        span {
+          font-size: 14px;
+        }
+      }
+      .card__data--item {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        padding: 0.25rem 0 0rem 0;
+        .icon {
+          margin-left: 0.25rem;
+        }
+      }
+    }
+    &__person {
+      color: #ffffff;
+      padding: 1rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      &--job {
+        font-size: 12px;
+      }
+    }
+  }
+  .logo {
+    padding: 0rem;
+    .header__title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    &-location {
+      background: url("src/assets/images/location-white.svg") no-repeat center center;
+    }
+    &-phone {
+      background: url("src/assets/images/phone-white.svg") no-repeat center center;
+    }
+    &-site {
+      background: url("src/assets/images/site-white.svg") no-repeat center center;
+    }
+    &-email {
+      background: url("src/assets/images/email-white.svg") no-repeat center center;
+    }
+  }
+}
