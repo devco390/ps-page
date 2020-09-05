@@ -10,6 +10,7 @@ const routes: Routes = [
       import('./components/cards/cards.module').then(mod => mod.CardsModule)
   },
   { path: '', component: MainComponent, pathMatch: 'full' },
+  { path: 'mantenimiento-impresoras-bogota', component: MainComponent, pathMatch: 'full' },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
 ];
