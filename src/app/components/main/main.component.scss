@@ -9,6 +9,7 @@
   &__data {
     color: #ffffff;
     &--info {
+      font-size: 12px;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -33,10 +34,18 @@
       }
     }
     .ps-main__title {
-      max-width: 296px;
+      color: rgb(255, 255, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &--exclamation {
+        color: yellow;
+      }
       h1 {
-        font-weight: 500;
-        font-size: 24px;
+        font-weight: 400;
+        font-size: 1.5rem;
+        text-align: center;
       }
     }
   }
@@ -59,9 +68,9 @@
       justify-content: center;
       padding-top: 3rem;
       h2 {
-        font-weight: normal;
-        font-size: 20px;
-        text-align: end;
+        font-weight: 400;
+        font-size: 1rem;
+        text-align: center;
         width: 408px;
       }
     }
