@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+
+import { filter } from 'rxjs/operators';
+
+declare var gtag;
 
 @Component({
   selector: 'app-root',
@@ -6,7 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'ps-page';
+  constructor(private router: Router) {
+    const navEndEvents$ = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    );
+
+    navEndEvents$.subscribe((event: NavigationEnd) => {
+      gtag('config', 'UA-177560620-1', {
+        page_path: event.urlAfterRedirects
+      });
+    });
+  }
 
   ngOnInit() {
     console.log(
