@@ -10,6 +10,7 @@ import { CallToActionsComponent } from './components/call-to-actions/call-to-act
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CardsModule } from './components/cards/cards.module';
 import { BackgroundComponent } from './components/background/background.component';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { BackgroundComponent } from './components/background/background.componen
     CardsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

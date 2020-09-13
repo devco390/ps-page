@@ -1,8 +1,13 @@
 <div class="ps-call-to-actions">
-  <a href="tel:{{ phone }}" class="call-to-action call-to-action__phone">
+  <a
+    (click)="sendTrack('llamada')"
+    href="tel:{{ phone }}"
+    class="call-to-action call-to-action__phone"
+  >
     <i class="icon-mobile"></i>
   </a>
   <a
+    (click)="sendTrack('whatsapp')"
     href="https://api.whatsapp.com/send?phone={{ phone }}"
     class="call-to-action call-to-action__whatsapp"
   >
