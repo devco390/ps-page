@@ -15,10 +15,9 @@ export class CallToActionsComponent implements OnInit {
   sendTrack(eventName: string): void {
     this.googleAnalyticsService.eventEmitter(
       eventName,
-      'call_to_actions',
-      eventName,
+      'actions',
       'click',
-      0
+      eventName,
     );
   }
 }
