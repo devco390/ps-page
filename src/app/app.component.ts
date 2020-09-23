@@ -26,24 +26,16 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log(
       `======================================
-Disfruta del pánico que te provoca
-tener la vida por delante.
-.
-.
-.
-Las experiencias de quienes nos precedieron,
-de nuestros “poetas muertos”,
-te ayudan a caminar por la vida
-La sociedad de hoy somos nosotros:
-Los “poetas vivos”.
-.
-.
-.
-No permitas que la vida te pase a ti sin que la vivas. 
+Hay cosas peores que estar solo      
+pero a menudo toma décadas darse cuenta de ello      
+y más a menudo cuando esto ocurre      
+es demasiado tarde      
+y no hay nada peor      
+que un "demasiado tarde".
 
-(Walt Whitman)
+(¡OH, SI! - Charles Bukowski)
 
-https://www.youtube.com/watch?v=84hVojXBLY0
+https://www.youtube.com/watch?v=rAR7GORSL3M
 
 ======================================`
     );
