@@ -43,7 +43,7 @@ No permitas que la vida te pase a ti sin que la vivas.
 
 (Walt Whitman)
 
-ttps://www.youtube.com/watch?v=84hVojXBLY0
+https://www.youtube.com/watch?v=84hVojXBLY0
 
 ======================================`
     );

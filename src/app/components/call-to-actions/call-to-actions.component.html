@@ -2,15 +2,22 @@
   <a
     (click)="sendTrack('llamada')"
     href="tel:{{ phone }}"
-    class="call-to-action call-to-action__phone"
+    class="call-to-action call-to-action__phone animate__animated animate__zoomIn animate__delay-2s"
   >
-    <i class="icon-mobile"></i>
+    <div class="call-to-action__grouper">
+      <i class="icon-mobile"></i>
+      <span>Llama ahora!</span>
+    </div>
+    <span class="call-to-action__number">311 438 69 70</span>
   </a>
   <a
     (click)="sendTrack('whatsapp')"
     href="https://api.whatsapp.com/send?phone={{ phone }}"
-    class="call-to-action call-to-action__whatsapp"
+    class="call-to-action call-to-action__whatsapp animate__animated animate__zoomIn animate__delay-3s"
   >
-    <i class="icon-whatsapp"></i>
+    <div class="call-to-action__grouper">
+      <i class="icon-whatsapp"></i>
+      <span>Escríbenos!</span>
+    </div>
   </a>
 </div>

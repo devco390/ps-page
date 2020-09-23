@@ -2,26 +2,26 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 1rem;
+  padding: 0;
   box-sizing: border-box;
-  background-color: #ffffff;
   &__wrapper {
     display: flex;
     flex-direction: column;
-    background-color: #1d1d1b;
+    // background-color: #1d1d1b;
+    background-color: #ffffff;
     border-radius: 4px;
     height: 100%;
+    .ps-header {
+      background-color: #1d1d1b;
+    }
     .ps-main {
       position: relative;
-      padding: 1rem;
       width: 100%;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
       flex: 1 1 auto;
-      @media (min-width: 768px) {
-        padding: 1.5rem;
-      }
+      overflow: auto;
     }
   }
 }
