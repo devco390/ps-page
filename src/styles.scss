@@ -13,6 +13,10 @@ html {
   font-size: calc(16px + 2 * (100vw - 768px) / 624);
 }
 
+div {
+  box-sizing: border-box;
+}
+
 h1,
 h2 {
   margin: 0;

@@ -1,0 +1,40 @@
+<agm-map
+  #agmMap
+  [latitude]="lat"
+  [zoom]="zoom"
+  [longitude]="lng"
+  [styles]="styles"
+  [gestureHandling]="'none'"
+  (mapReady)="onMapLoad()"
+>
+  <agm-marker-cluster [styles]="clusterStyles" [calculator]="calculateCluster">
+    <agm-marker
+      *ngFor="let m of markers; let i = index"
+      (mouseOver)="tooltip.open()"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [iconUrl]="m.icon"
+    >
+      <agm-info-window #tooltip>
+        <ng-container
+          *ngTemplateOutlet="infoTitle; context: { $implicit: m.infoTitle }"
+        >
+        </ng-container>
+        <ng-container
+          *ngTemplateOutlet="template; context: { $implicit: m.label }"
+        >
+        </ng-container>
+      </agm-info-window>
+    </agm-marker>
+  </agm-marker-cluster>
+</agm-map>
+
+<ng-template #infoTitle let-context>
+  <div>
+    <b>{{ context }}</b>
+  </div>
+</ng-template>
+<ng-template #template let-context>
+  <div>{{ context }}</div>
+  <a href="{{ urlToRedirectGoogleMaps }}" target="_blank">Ver en Google Maps</a>
+</ng-template>
