@@ -1,23 +1,29 @@
 <div class="ps-call-to-actions">
   <a
-    (click)="sendTrack('llamada')"
+    class="call-to-action call-to-action--call animate__animated animate__zoomIn animate__delay-2s"
     href="tel:{{ phone }}"
-    class="call-to-action call-to-action__phone animate__animated animate__zoomIn animate__delay-2s"
+    (click)="sendTrack('llamada')"
   >
-    <div class="call-to-action__grouper">
+    <div class="call-to-action__circle">
       <i class="icon-mobile"></i>
-      <!-- <span>Llama ahora!</span> -->
     </div>
-    <!-- <span class="call-to-action__number">311 438 69 70</span> -->
+    <div class="call-to-action__text">
+      <span>Llama ahora!</span>
+      <span class="call-to-action__number">311 438 69 70</span>
+    </div>
   </a>
+
   <a
-    (click)="sendTrack('whatsapp')"
+    class="call-to-action call-to-action--whatsapp animate__animated animate__zoomIn animate__delay-3s"
     href="https://api.whatsapp.com/send?phone={{ phone }}"
-    class="call-to-action call-to-action__whatsapp animate__animated animate__zoomIn animate__delay-3s"
+    (click)="sendTrack('whatsapp')"
   >
-    <div class="call-to-action__grouper">
+    <div class="call-to-action__circle">
       <i class="icon-whatsapp"></i>
-      <!-- <span>Escríbenos!</span> -->
+    </div>
+    <div class="call-to-action__text">
+      <span> Atención en línea</span>
+      <!-- <span class="call-to-action__number">311 438 69 70</span> -->
     </div>
   </a>
 </div>
