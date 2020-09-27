@@ -13,10 +13,10 @@
     border-radius: 5px;
     box-shadow: 0 17px 10px -10px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: all ease-in-out 300ms;
+    transition: all ease-in-out 500ms;
     &:hover {
       box-shadow: 0 37px 20px -20px rgba(0, 0, 0, 0.2);
-      transform: translate(0, -10px);
+      transform: translate(0, -4px);
     }
     &__circle {
       color: #ffffff;
