@@ -5,7 +5,7 @@
   flex-direction: column;
   .call-to-action {
     margin-bottom: 16px;
-    width: 180px;
+    padding: 8px;
     height: 60px;
     cursor: pointer;
     background: #ffffff;
@@ -20,7 +20,6 @@
     justify-content: center;
     border-radius: 5px;
     box-shadow: 0 17px 10px -10px rgba(0, 0, 0, 0.4);
-    padding: 0 8px;
 
     &__circle {
       color: #ffffff;
@@ -36,14 +35,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 12px;
+      font-size: 0.9rem;
       font-weight: 600;
       line-height: 1;
       text-transform: uppercase;
       letter-spacing: 0.075em;
       color: #ffffff;
       text-align: center;
-      width: 106px;
       padding-left: 8px;
       &--label {
         white-space: nowrap;
@@ -60,6 +58,9 @@
     }
     &--whatsapp {
       background-color: $whatsappColor;
+      .call-to-action__text {
+        width: 106px;
+      }
     }
   }
 }
@@ -106,8 +107,8 @@
   left: 0.25em;
   width: 0.5em;
   height: 0.5em;
-  // background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTYuNiAxMC44YzEuNCAyLjggMy44IDUuMSA2LjYgNi42bDIuMi0yLjJjLjMtLjMuNy0uNCAxLS4yIDEuMS40IDIuMy42IDMuNi42LjUgMCAxIC40IDEgMVYyMGMwIC41LS41IDEtMSAxLTkuNCAwLTE3LTcuNi0xNy0xNyAwLS42LjQtMSAxLTFoMy41Yy41IDAgMSAuNCAxIDEgMCAxLjIuMiAyLjUuNiAzLjYuMS40IDAgLjctLjIgMWwtMi4zIDIuMnoiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=);
-  background: url("src/assets/images/phone-cyan_old.svg") no-repeat;
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTYuNiAxMC44YzEuNCAyLjggMy44IDUuMSA2LjYgNi42bDIuMi0yLjJjLjMtLjMuNy0uNCAxLS4yIDEuMS40IDIuMy42IDMuNi42LjUgMCAxIC40IDEgMVYyMGMwIC41LS41IDEtMSAxLTkuNCAwLTE3LTcuNi0xNy0xNyAwLS42LjQtMSAxLTFoMy41Yy41IDAgMSAuNCAxIDEgMCAxLjIuMiAyLjUuNiAzLjYuMS40IDAgLjctLjIgMWwtMi4zIDIuMnoiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=);
+  // background: url("src/assets/images/phone-cyan_old.svg") no-repeat;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
