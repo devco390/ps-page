@@ -4,12 +4,12 @@
     href="tel:{{ phone }}"
     (click)="sendTrack('llamada')"
   >
-    <div class="call-to-action__circle">
-      <i class="Phone is-animating"></i>
-    </div>
     <div class="call-to-action__text">
       <span class="call-to-action__text--label">Llama ahora!</span>
       <span class="call-to-action__number">311 438 69 70</span>
+    </div>
+    <div class="call-to-action__circle">
+      <i class="Phone is-animating"></i>
     </div>
   </a>
 
@@ -18,11 +18,11 @@
     href="https://api.whatsapp.com/send?phone={{ phone }}"
     (click)="sendTrack('whatsapp')"
   >
-    <div class="call-to-action__circle">
-      <i class="Phone icon-whatsapp"></i>
-    </div>
     <div class="call-to-action__text">
       <span> Atención en línea</span>
+    </div>
+    <div class="call-to-action__circle">
+      <i class="Phone icon-whatsapp"></i>
     </div>
   </a>
 </div>
