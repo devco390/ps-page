@@ -10,6 +10,31 @@
   width: 100%;
   height: 100%;
 
+  h2 {
+    font-size: 24px;
+    margin: 10px 0px 20px;
+    color: darken($darkCyan, 10%);
+    text-align: center;
+  }
+
+  &__who {
+    display: flex;
+    padding: 1rem 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-size: 22px;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      color: darken($darkCyan, 30%);
+      font-size: 20px;
+      line-height: 1.5;
+      max-width: 480px;
+    }
+  }
+
   &__ink {
     position: absolute;
     width: 100%;
@@ -115,14 +140,15 @@
     &--description {
       justify-content: center;
       padding: 16px 16px 0 16px;
-      h2 {
-        color: $blackColor;
-        font-weight: 400;
-        font-size: 0.9rem;
+      p {
+        font-size: 22px;
+        padding: 0;
+        margin: 0;
         text-align: center;
-        width: 408px;
-        letter-spacing: 0.01em;
+        color: darken($darkCyan, 30%);
+        font-size: 20px;
         line-height: 1.5;
+        max-width: 480px;
       }
     }
     .icon {
