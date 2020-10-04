@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 declare var gtag;
 
@@ -11,7 +12,12 @@ declare var gtag;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
+    this.http.get<{ ip: string }>('https://jsonip.com').subscribe(data => {
+      console.log('th data', data);
+      // this.ipAddress = data;
+    });
+
     const navEndEvents$ = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     );

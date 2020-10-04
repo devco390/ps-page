@@ -14,6 +14,7 @@ import { GoogleAnalyticsService } from './services/google-analytics.service';
 import { MapsComponent } from './components/maps/maps.component';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { AgmCoreModule } from '@agm/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     CardsModule,
     AppRoutingModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA4t3cwYydHGFXeL8k65XN44uuEqaxS98o'
     }),

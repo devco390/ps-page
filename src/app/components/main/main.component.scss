@@ -67,6 +67,7 @@
   }
   &__data {
     color: #ffffff;
+    height: 100vh;
 
     &--info {
       color: $darkColor;
@@ -78,6 +79,7 @@
       box-sizing: border-box;
       font-size: 12px;
       width: 100%;
+      height: auto;
       padding: 16px 16px 16px 16px;
       @media (min-width: 768px) {
         width: 60%;
@@ -115,10 +117,12 @@
         color: yellow;
       }
       h1 {
-        color: darkcyan;
+        color: #ffffff;
+        // color: darken(cyan, 40%);
         font-size: 38px;
         line-height: 1em;
         text-align: center;
+        text-shadow: 4px 4px 14px #000000;
       }
     }
   }
@@ -140,15 +144,18 @@
     &--description {
       justify-content: center;
       padding: 16px 16px 0 16px;
+      // display: none;
       p {
         font-size: 22px;
         padding: 0;
         margin: 0;
         text-align: center;
-        color: darken($darkCyan, 30%);
-        font-size: 20px;
+        color: lighten(cyan, 10%);
+        font-size: 24px;
         line-height: 1.5;
         max-width: 480px;
+        font-weight: 600;
+        text-shadow: 4px 4px 14px #000000;
       }
     }
     .icon {
@@ -186,109 +193,109 @@
 
 // cube
 
-$size-px: 220px;
-$size: 220px;
-$size-lg: $size * 1.5;
-$transform: $size-px / 2;
+// $size-px: 220px;
+// $size: 220px;
+// $size-lg: $size * 1.5;
+// $transform: $size-px / 2;
 
-.scene {
-  perspective: 1600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 220px;
-  width: 220px;
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 32px 16px 24px 16px;
-  box-sizing: border-box;
-  // transition: 0.8s;
-}
+// .scene {
+//   perspective: 1600px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 220px;
+//   width: 220px;
+//   background-size: 100% 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   margin: 32px 16px 24px 16px;
+//   box-sizing: border-box;
+//   // transition: 0.8s;
+// }
 
-.cube {
-  transform-style: preserve-3d;
-  position: relative;
-  width: $size-px;
-  height: $size-px;
-  animation: rotate 22s ease-in-out infinite;
-  transform-origin: center center;
-}
+// .cube {
+//   transform-style: preserve-3d;
+//   position: relative;
+//   width: $size-px;
+//   height: $size-px;
+//   animation: rotate 22s ease-in-out infinite;
+//   transform-origin: center center;
+// }
 
-.side {
-  position: absolute;
-  width: $size-px;
-  height: $size-px;
-  background-color: #333;
-  opacity: 0.95;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: 1px solid #fff;
-  border-radius: 4px;
-}
+// .side {
+//   position: absolute;
+//   width: $size-px;
+//   height: $size-px;
+//   background-color: #333;
+//   opacity: 0.95;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   border: 1px solid #fff;
+//   border-radius: 4px;
+// }
 
-.back {
-  transform: translateZ(-#{$transform}) rotateX(180deg);
-  background-image: url("/assets/images/printer-1.jpg");
-  // border-color: cyan;
-}
+// .back {
+//   transform: translateZ(-#{$transform}) rotateX(180deg);
+//   background-image: url("/assets/images/printer-1.jpg");
+//   // border-color: cyan;
+// }
 
-.left {
-  transform: translateX(-#{$transform}) rotateY(90deg);
-  background-image: url("/assets/images/printer-2.jpg");
-  // border-color: cyan;
-}
+// .left {
+//   transform: translateX(-#{$transform}) rotateY(90deg);
+//   background-image: url("/assets/images/printer-2.jpg");
+//   // border-color: cyan;
+// }
 
-.right {
-  transform: translateX($transform) rotateY(90deg);
-  background-image: url("/assets/images/printer-3.jpg");
-  // border-color: yellow;
-}
+// .right {
+//   transform: translateX($transform) rotateY(90deg);
+//   background-image: url("/assets/images/printer-3.jpg");
+//   // border-color: yellow;
+// }
 
-.top {
-  transform: translateY(-#{$transform}) rotateX(90deg);
-  background-image: url("/assets/images/printer-4.jpg");
-  // border-color: yellow;
-}
+// .top {
+//   transform: translateY(-#{$transform}) rotateX(90deg);
+//   background-image: url("/assets/images/printer-4.jpg");
+//   // border-color: yellow;
+// }
 
-.bottom {
-  transform: translateY($transform) rotateX(270deg);
-  background-image: url("/assets/images/printer-5.jpg");
-  // border-color: magenta;
-}
+// .bottom {
+//   transform: translateY($transform) rotateX(270deg);
+//   background-image: url("/assets/images/printer-5.jpg");
+//   // border-color: magenta;
+// }
 
-.front {
-  transform: translateZ($transform);
-  background-image: url("/assets/images/printer-6.jpg");
-  // border-color: magenta;
-}
+// .front {
+//   transform: translateZ($transform);
+//   background-image: url("/assets/images/printer-6.jpg");
+//   // border-color: magenta;
+// }
 
-@keyframes rotate {
-  0% {
-    transform: rotateX(0);
-  }
-  12.5% {
-    transform: rotateY(90deg);
-  }
-  25% {
-    transform: rotateY(270deg);
-  }
-  37.5% {
-    transform: rotateY(270deg);
-  }
-  50% {
-    transform: rotateY(360deg);
-  }
-  62.5% {
-    transform: rotateX(90deg);
-  }
-  75% {
-    transform: rotateX(180deg);
-  }
-  87.5% {
-    transform: rotateX(270deg);
-  }
-  100% {
-    transform: rotateX(360deg);
-  }
-}
+// @keyframes rotate {
+//   0% {
+//     transform: rotateX(0);
+//   }
+//   12.5% {
+//     transform: rotateY(90deg);
+//   }
+//   25% {
+//     transform: rotateY(270deg);
+//   }
+//   37.5% {
+//     transform: rotateY(270deg);
+//   }
+//   50% {
+//     transform: rotateY(360deg);
+//   }
+//   62.5% {
+//     transform: rotateX(90deg);
+//   }
+//   75% {
+//     transform: rotateX(180deg);
+//   }
+//   87.5% {
+//     transform: rotateX(270deg);
+//   }
+//   100% {
+//     transform: rotateX(360deg);
+//   }
+// }

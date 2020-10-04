@@ -39,11 +39,11 @@
       justify-content: center;
       align-items: center;
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 1;
       text-transform: uppercase;
       letter-spacing: 0.075em;
-      color: $blackColor;
+      color: darken($darkCyan, 30%);
       text-align: center;
       padding-left: 8px;
       border-radius: 16px;
