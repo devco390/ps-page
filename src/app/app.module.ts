@@ -15,6 +15,8 @@ import { MapsComponent } from './components/maps/maps.component';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AngularFireModule.initializeApp(environment.firebase),
     CardsModule,
     AppRoutingModule,
     HttpClientModule,

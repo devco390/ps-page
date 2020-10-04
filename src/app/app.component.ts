@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { FirestoreService } from './services/ip-tracker.service';
 
 declare var gtag;
 
@@ -12,12 +13,13 @@ declare var gtag;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private http: HttpClient) {
-    this.http.get<{ ip: string }>('https://jsonip.com').subscribe(data => {
-      console.log('th data', data);
-      // this.ipAddress = data;
-    });
+  ipSaved = false;
 
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private firestoreService: FirestoreService
+  ) {
     const navEndEvents$ = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     );
@@ -29,7 +31,37 @@ export class AppComponent implements OnInit {
     });
   }
 
+  getIp() {
+    this.ipSaved = sessionStorage['ip-saved-ps'] === undefined ? false : true;
+
+    this.http.get<{ ip: string }>('https://jsonip.com').subscribe(data => {
+      const currentDate = new Date();
+      const date = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
+
+      this.saveIp(data.ip, date);
+    });
+  }
+
+  saveIp(ip: string, date: string) {
+    const fromf5 = this.ipSaved ? true : false;
+    sessionStorage['ip-saved-ps'] = 1;
+    let data = {
+      ip: ip,
+      date: date,
+      fromF5: fromf5
+    };
+    this.firestoreService.createIpTrack(data);
+    // .then(res => {
+
+    // })
+    // .catch(error => {
+    //   console.log(error);
+    // });
+  }
+
   ngOnInit() {
+    this.getIp();
+
     console.log(
       `======================================
 Hay cosas peores que estar solo      
