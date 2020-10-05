@@ -17,6 +17,7 @@ import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { environment } from '../environments/environment';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA4t3cwYydHGFXeL8k65XN44uuEqaxS98o'
     }),
-    AgmJsMarkerClustererModule
+    AgmJsMarkerClustererModule,
+    NoopAnimationsModule
   ],
   providers: [GoogleAnalyticsService],
   bootstrap: [AppComponent]
