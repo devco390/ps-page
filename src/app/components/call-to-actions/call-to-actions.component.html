@@ -2,7 +2,7 @@
   <a
     class="call-to-action call-to-action--call animate__animated animate__zoomIn animate__delay-2s"
     href="tel:{{ phone }}"
-    (click)="sendTrack('llamada')"
+    (click)="sendTrack('llamada-flotante'); saveDataAction('llamada-flotante')"
   >
     <div class="call-to-action__text">
       <span class="call-to-action__text--label">Llama ahora!</span>
@@ -16,7 +16,9 @@
   <a
     class="call-to-action call-to-action--whatsapp animate__animated animate__zoomIn animate__delay-3s"
     href="https://api.whatsapp.com/send?phone={{ phone }}"
-    (click)="sendTrack('whatsapp')"
+    (click)="
+      sendTrack('whatsapp-flotante'); saveDataAction('whatsapp-flotante')
+    "
   >
     <div class="call-to-action__text">
       <span> Atención en línea</span>
