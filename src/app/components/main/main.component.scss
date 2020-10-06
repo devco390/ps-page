@@ -68,6 +68,10 @@
   &__data {
     color: #ffffff;
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    object-fit: contain;
+    background-image: url("../../../assets/images/photos/IMG_6330.JPG");
 
     &--info {
       color: $darkColor;

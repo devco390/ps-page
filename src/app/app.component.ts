@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { FirestoreService } from './services/ip-tracker.service';
+import { DOCUMENT } from '@angular/common';
 
 declare var gtag;
 
@@ -14,12 +15,15 @@ declare var gtag;
 })
 export class AppComponent implements OnInit {
   ipSaved = false;
+  document: any;
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private firestoreService: FirestoreService
+    private firestoreService: FirestoreService,
+    @Inject(DOCUMENT) _document: any
   ) {
+    this.document = _document;
     const navEndEvents$ = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     );
@@ -45,18 +49,14 @@ export class AppComponent implements OnInit {
   saveIp(ip: string, date: string) {
     const fromf5 = this.ipSaved ? true : false;
     sessionStorage['ip-saved-ps'] = 1;
+
     let data = {
       ip: ip,
       date: date,
-      fromF5: fromf5
+      fromF5: fromf5,
+      routePath: this.document.location.pathname
     };
     this.firestoreService.createIpTrack(data);
-    // .then(res => {
-
-    // })
-    // .catch(error => {
-    //   console.log(error);
-    // });
   }
 
   ngOnInit() {

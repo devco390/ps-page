@@ -1,0 +1,74 @@
+<div class="ip-tracking">
+  <div class="ip-tracking__butons">
+    <button (click)="updateGeoLocaleIps()">
+      Actualizar geo localizacion de ips
+    </button>
+  </div>
+
+  <div class="ip-tracking__table">
+    <table mat-table [dataSource]="ipsData" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="ip">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>IP</th>
+        <td mat-cell *matCellDef="let element">{{ element.ip }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="routePath">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ruta</th>
+        <td mat-cell *matCellDef="let element">{{ element.routePath }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Localizacion</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="ip-tracking__location">
+            <div>
+              <span>Latitud:</span>
+              {{ element.latitude }}
+            </div>
+            <div>
+              <span>Longitud:</span>
+              {{ element.longitude }}
+            </div>
+            <div>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query={{
+                  element.latitude
+                }},{{ element.longitude }}"
+                target="_blank"
+                ><span>Ver mapa:</span></a
+              >
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="ip-tracking__dates">
+            <span *ngFor="let dateData of element.date">
+              {{ dateData }}
+            </span>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fromF5">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Recargó la pagina
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.fromF5 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.total }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

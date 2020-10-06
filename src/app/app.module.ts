@@ -18,12 +18,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { IpTrackingComponent } from './components/ip-tracking/ip-tracking.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     HeaderComponent,
+    IpTrackingComponent,
     SidebarComponent,
     CallToActionsComponent,
     NotFoundComponent,
@@ -36,6 +40,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     CardsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatTableModule,
+    MatSortModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA4t3cwYydHGFXeL8k65XN44uuEqaxS98o'
     }),
