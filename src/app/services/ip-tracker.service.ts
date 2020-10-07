@@ -17,8 +17,18 @@ export class FirestoreService {
       .snapshotChanges();
   }
 
-  public getIpsTrack() {
-    return this.firestore.collection('ipTrack').snapshotChanges();
+  public getIpsTrack(initDate = undefined, endDate = undefined) {
+    if (initDate && endDate) {
+      initDate.setHours(0, 0, 0, 0);
+      endDate.setHours(24, 0, 0, 0);
+      return this.firestore
+        .collection('ipTrack', ref =>
+          ref.where('timestamp', '>', initDate).where('timestamp', '<', endDate)
+        )
+        .snapshotChanges();
+    } else {
+      return this.firestore.collection('ipTrack').snapshotChanges();
+    }
   }
 
   public updateIpTrack(documentId: string, data: any) {

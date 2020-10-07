@@ -45,8 +45,17 @@ export class CallToActionsComponent implements OnInit, OnChanges {
     const data = {
       ...this.dataIp,
       date: date,
-      eventName: eventName
+      dateJson: currentDate.toJSON(),
+      eventName: eventName,
+      timestamp: currentDate
     };
-    this.callToActionsService.createData(data);
+    this.callToActionsService
+      .createData(data)
+      .then(res => {
+        // console.log('firebase store SUCCESS');
+      })
+      .catch(res => {
+        console.log('Store ERROR', res);
+      });
   }
 }

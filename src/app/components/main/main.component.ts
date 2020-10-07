@@ -29,23 +29,32 @@ export class MainComponent implements OnInit {
     this.ipSaved = sessionStorage['ip-saved-ps'] === undefined ? false : true;
 
     this.http.get<{ ip: string }>('https://jsonip.com').subscribe(data => {
-      const currentDate = new Date();
-      const date = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
-
-      this.saveIp(data.ip, date);
+      this.saveIp(data.ip);
     });
   }
 
-  saveIp(ip: string, date: string) {
+  saveIp(ip: string) {
     const fromf5 = this.ipSaved ? true : false;
+    const currentDate = new Date();
+
+    const date = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
 
     this.dataIp = {
       ip: ip,
       date: date,
+      dateJson: currentDate.toJSON(),
       fromF5: fromf5,
-      routePath: this.document.location.pathname
+      routePath: this.document.location.pathname,
+      timestamp: currentDate
     };
     sessionStorage['ip-saved-ps'] = this.dataIp;
-    this.firestoreService.createIpTrack(this.dataIp);
+    this.firestoreService
+      .createIpTrack(this.dataIp)
+      .then(res => {
+        // console.log('firebase store SUCCESS');
+      })
+      .catch(res => {
+        console.log('Store ERROR', res);
+      });
   }
 }

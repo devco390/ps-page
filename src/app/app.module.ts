@@ -21,6 +21,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { IpTrackingComponent } from './components/ip-tracking/ip-tracking.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -37,11 +43,18 @@ import { MatSortModule } from '@angular/material/sort';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AngularFireModule.initializeApp(environment.firebase),
+    FormsModule,
+    ReactiveFormsModule,
     CardsModule,
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,
     MatSortModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatInputModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA4t3cwYydHGFXeL8k65XN44uuEqaxS98o'
     }),

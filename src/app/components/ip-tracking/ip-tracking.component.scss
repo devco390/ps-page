@@ -25,14 +25,30 @@
       font-weight: 600;
     }
   }
-  &__dates {
+  &__filters {
+    display: flex;
+    align-items: center;
+    &__dates {
+      padding: 0 0.5rem;
+    }
+    button {
+      margin-left: 1rem;
+    }
+  }
+  &__dates,
+  &__paths {
     display: flex;
     max-height: 180px;
     overflow: auto;
     display: flex;
     flex-direction: column;
-    span {
-      line-height: 16px;
+    div {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0;
+      span {
+        line-height: 16px;
+      }
     }
   }
 }

@@ -31,7 +31,7 @@ export class IpGeoLocaleService {
 
   public getDataIp(ip) {
     return this.http.get<{ ip: string }>(
-      `http://api.ipstack.com/${ip}?access_key=c5dbe95f0b625ca27a2f20c3d392d70e`
+      `https://api.ipstack.com/${ip}?access_key=c5dbe95f0b625ca27a2f20c3d392d70e`
     );
   }
-} 
+}
