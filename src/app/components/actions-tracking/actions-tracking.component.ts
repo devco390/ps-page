@@ -1,28 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FirestoreService } from 'src/app/services/ip-tracker.service';
-import { IpGeoLocaleService } from 'src/app/services/ip-geo-locale.service';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl } from '@angular/forms';
+import { IpData } from '../ip-tracking/ip-tracking.component';
+import { MatSort } from '@angular/material/sort';
 import { MatDatepicker } from '@angular/material/datepicker';
-
-export interface IpData {
-  ip: string;
-  date: string[];
-  fromF5: string;
-  total: number;
-  latitude?: number;
-  longitude?: number;
-  routePath?: string;
-  eventName?: string;
-}
+import { FormControl } from '@angular/forms';
+import { CallToActionsService } from 'src/app/services/call-to-actions.service';
+import { IpGeoLocaleService } from 'src/app/services/ip-geo-locale.service';
 
 @Component({
-  selector: 'app-ip-tracking',
-  templateUrl: './ip-tracking.component.html',
-  styleUrls: ['./ip-tracking.component.scss']
+  selector: 'app-actions-tracking',
+  templateUrl: './actions-tracking.component.html',
+  styleUrls: ['./actions-tracking.component.scss']
 })
-export class IpTrackingComponent implements OnInit {
+export class ActionsTrackingComponent implements OnInit {
   displayedColumns: string[] = ['ip', 'routePath', 'location', 'date', 'total'];
   dataSource: IpData[] = [];
   ipsData = null;
@@ -36,7 +26,7 @@ export class IpTrackingComponent implements OnInit {
   endDate = new FormControl(new Date());
 
   constructor(
-    private firestoreService: FirestoreService,
+    private CallToActionsService: CallToActionsService,
     private ipGeoLocaleService: IpGeoLocaleService
   ) {}
 
@@ -82,9 +72,8 @@ export class IpTrackingComponent implements OnInit {
   }
 
   getDataIps(initDate = undefined, endDate = undefined) {
-    this.firestoreService
-      .getIpsTrack(initDate, endDate)
-      .subscribe(ipsSnapshot => {
+    this.CallToActionsService.getAllData(initDate, endDate).subscribe(
+      ipsSnapshot => {
         this.dataSource = [];
 
         ipsSnapshot.forEach((ipData: any) => {
@@ -97,6 +86,7 @@ export class IpTrackingComponent implements OnInit {
             date: ipData.payload.doc.data().date,
             fromF5: ipData.payload.doc.data().fromF5,
             total: 0,
+            eventName: ipData.payload.doc.data().eventName,
             latitude: location === undefined ? '' : location.latitude,
             longitude: location === undefined ? '' : location.longitude,
             routePath:
@@ -108,7 +98,8 @@ export class IpTrackingComponent implements OnInit {
 
         this.ipsData = new MatTableDataSource<IpData>(this.transformDataIps());
         this.ipsData.sort = this.sort;
-      });
+      }
+    );
   }
 
   getGeoLocaleIps() {
@@ -118,8 +109,6 @@ export class IpTrackingComponent implements OnInit {
       ipsSnapshot.forEach((ipData: any) => {
         this.ipsDataGeoLocale.push(ipData.payload.doc.data());
       });
-      console.log(this.initDate.value);
-      console.log(this.endDate.value);
       this.getDataIps(this.initDate.value, this.endDate.value);
     });
   }
@@ -137,9 +126,11 @@ export class IpTrackingComponent implements OnInit {
         });
 
         const dates = dataSourceByIp.map(data => {
-          return `<span>${data.date} ${this.transformFromReload(
-            data.fromF5
-          )} </span><span>Página: ${data.routePath}</span>`;
+          return `<span><b>Action:</b> ${data.eventName}</span><span>${
+            data.date
+          } ${this.transformFromReload(data.fromF5)} </span><span>Página: ${
+            data.routePath
+          }</span>`;
         });
 
         let paths = dataSourceByIp.map(data => {
@@ -185,7 +176,7 @@ export class IpTrackingComponent implements OnInit {
 
   updateIpsDates() {
     let cont = 0;
-    this.firestoreService.getIpsTrack().subscribe(ipsSnapshot => {
+    this.CallToActionsService.getAllData().subscribe(ipsSnapshot => {
       console.log('===== TOTAL ====== ', ipsSnapshot.length);
       ipsSnapshot.forEach((ipData: any) => {
         let data = ipData.payload.doc.data();
@@ -202,8 +193,8 @@ export class IpTrackingComponent implements OnInit {
           if (data.date.toString().indexOf('a. m.') !== -1) {
             data.date = data.date.replace('a. m.', 'AM');
           }
-          data.date = data.date.replace('10/5/2000', '10/5/2020');
-          data.date = data.date.replace('10/6/2000', '10/6/2020');
+          data.date = data.date.replace('7/10/2020', '10/7/2020');
+          data.date = data.date.replace('6/10/2020', '10/6/2020');
 
           let date = new Date(data.date);
           let jsonDate = date.toJSON();
@@ -214,8 +205,7 @@ export class IpTrackingComponent implements OnInit {
           data = { ...data, dateJson: jsonDate, timestamp: date };
           console.log('data: ==== ', data);
           console.log('===== COUNYTER ====== ', cont);
-          this.firestoreService
-            .updateIpTrack(ipData.payload.doc.id, data)
+          this.CallToActionsService.updateData(ipData.payload.doc.id, data)
             .then(response => {
               console.log(response);
               console.log(`update success by id ${ipData.payload.doc.id} `);
@@ -239,14 +229,5 @@ export class IpTrackingComponent implements OnInit {
       return obj.ip === ip;
     });
     return data === undefined ? 0 : data.length;
-  }
-
-  groupByKey(array, key) {
-    return array.reduce((hash, obj) => {
-      if (obj[key] === undefined) return hash;
-      return Object.assign(hash, {
-        [obj[key]]: (hash[obj[key]] || []).concat(obj)
-      });
-    }, {});
   }
 }

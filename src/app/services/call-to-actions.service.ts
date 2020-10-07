@@ -17,8 +17,18 @@ export class CallToActionsService {
       .snapshotChanges();
   }
 
-  public getAllData() {
-    return this.firestore.collection('callToActions').snapshotChanges();
+  public getAllData(initDate = undefined, endDate = undefined) {
+    if (initDate && endDate) {
+      initDate.setHours(0, 0, 0, 0);
+      endDate.setHours(24, 0, 0, 0);
+      return this.firestore
+        .collection('callToActions', ref =>
+          ref.where('timestamp', '>', initDate).where('timestamp', '<', endDate)
+        )
+        .snapshotChanges();
+    } else {
+      return this.firestore.collection('callToActions').snapshotChanges();
+    }
   }
 
   public updateData(documentId: string, data: any) {

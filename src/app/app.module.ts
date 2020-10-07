@@ -27,6 +27,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { ActionsTrackingComponent } from './components/actions-tracking/actions-tracking.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MatButtonModule } from '@angular/material/button';
     MainComponent,
     HeaderComponent,
     IpTrackingComponent,
+    ActionsTrackingComponent,
     SidebarComponent,
     CallToActionsComponent,
     NotFoundComponent,

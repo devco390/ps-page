@@ -1,0 +1,54 @@
+.actions-tracking {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  &__butons {
+    padding: 1rem;
+  }
+  &__table {
+    padding: 1rem;
+    table {
+      width: 100%;
+    }
+  }
+  &__location {
+    display: flex;
+    flex-direction: column;
+    > div {
+      display: flex;
+      flex-direction: column;
+      padding: 0.25rem;
+    }
+    span {
+      font-weight: 600;
+    }
+  }
+  &__filters {
+    display: flex;
+    align-items: center;
+    &__dates {
+      padding: 0 0.5rem;
+    }
+    button {
+      margin-left: 1rem;
+    }
+  }
+  &__dates,
+  &__paths {
+    display: flex;
+    max-height: 180px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    div {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0;
+      span {
+        line-height: 16px;
+      }
+    }
+  }
+}

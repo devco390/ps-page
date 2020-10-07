@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { IpTrackingComponent } from './components/ip-tracking/ip-tracking.component';
+import { ActionsTrackingComponent } from './components/actions-tracking/actions-tracking.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'ips', component: IpTrackingComponent, pathMatch: 'full' },
+  { path: 'actions', component: ActionsTrackingComponent, pathMatch: 'full' },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' }
 ];
