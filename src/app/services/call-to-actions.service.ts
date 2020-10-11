@@ -1,10 +1,43 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { GoogleAnalyticsService } from './google-analytics.service';
 @Injectable({
   providedIn: 'root'
 })
 export class CallToActionsService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private googleAnalyticsService: GoogleAnalyticsService
+  ) {}
+
+  saveAnalyticsTrack(eventName: string): void {
+    this.googleAnalyticsService.eventEmitter(
+      eventName,
+      'actions',
+      'click',
+      eventName
+    );
+  }
+
+  saveDataAction(eventName: string, dataIp: any) {
+    const currentDate = new Date();
+    const date = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
+    const data = {
+      ...dataIp,
+      date: date,
+      dateJson: currentDate.toJSON(),
+      eventName: eventName,
+      timestamp: currentDate
+    };
+
+    this.createData(data)
+      .then(res => {
+        // console.log('firebase store SUCCESS');
+      })
+      .catch(res => {
+        console.log('Store ERROR', res);
+      });
+  }
 
   public createData(data: any) {
     return this.firestore.collection('callToActions').add(data);

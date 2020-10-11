@@ -1,6 +1,8 @@
 // $darkColor: #1d1d1b;
 $blackColor: #1d1d1b;
+$blackText: #070909;
+$whiteColor: darken(#ffffff, 2%);
 $darkColor: lighten($blackColor, 10%);
 $darkCyan: darkCyan;
-$darkCyanTwo: darken(darkCyan, 0%);
+$darkCyanTwo: darken($darkCyan, 10%);
 $whatsappColor: #25d366;

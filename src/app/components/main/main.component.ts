@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 import { FirestoreService } from 'src/app/services/ip-tracker.service';
+import { CallToActionsService } from 'src/app/services/call-to-actions.service';
 
 @Component({
   selector: 'ps-main',
@@ -12,10 +13,32 @@ export class MainComponent implements OnInit {
   ipSaved = false;
   document: any;
   dataIp: any;
+  animationClass = '';
+  phone = '+57-311-4386970';
 
+  descriptions = [
+    { text: 'Mantenimientos Preventivos y Correctivos para Impresoras.' },
+    { text: '¡ Domicilio sin costo en Bogotá !' },
+    {
+      text: 'Rehabilitación profesional en piezas de impresoras.'
+    },
+    {
+      text: 'Esto Soluciona los problema en un alto porcentaje de casos.'
+    },
+    { text: 'Contamos con técnicos altamente calificados.' },
+    { text: 'Gracias a ellos, garantizamos 100% nuestros servicios.' },
+    { text: 'También contamos con...' },
+    {
+      text: 'Venta de Cartuchos, Toner y Tintas.'
+    }
+  ];
+
+  toFadeIn = this.descriptions.length;
+  slideCount = this.descriptions.length;
   constructor(
     private http: HttpClient,
     private firestoreService: FirestoreService,
+    private callToActionsService: CallToActionsService,
     @Inject(DOCUMENT) _document: any
   ) {
     this.document = _document;
@@ -23,6 +46,51 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.getIp();
+    setTimeout(() => {
+      this.changeFadeIn();
+    }, 0);
+  }
+
+  changeFadeIn() {
+    // setTimeout(() => {}, 3000 * this.descriptions.length);
+
+    const toFadeOut = this.toFadeIn;
+    this.toFadeIn += 1;
+
+    if (this.toFadeIn > this.slideCount) {
+      this.animationClass = 'active';
+      this.toFadeIn = 1;
+    }
+    let els = document.querySelectorAll('.ps-main__item--description__text');
+    for (let i = 0; i < els.length; i += 1) {
+      const el = els[i];
+
+      el.classList.remove('animate__fadeInDown', 'animate__fadeOutDown');
+      el.classList.add('hide');
+    }
+
+    const elToFadeOut = document.querySelector(
+      `.ps-main__item--description__text--${toFadeOut}`
+    );
+    elToFadeOut.classList.remove('hide');
+    elToFadeOut.classList.add('animate__fadeOutDown');
+    const elToFadeIn = document.querySelector(
+      `.ps-main__item--description__text--${this.toFadeIn}`
+    );
+    elToFadeIn.classList.remove('hide');
+    elToFadeIn.classList.add('animate__fadeInDown');
+
+    setTimeout(() => {
+      this.changeFadeIn();
+    }, 3000);
+  }
+
+  saveAnalyticsTrack(eventName: string): void {
+    this.callToActionsService.saveAnalyticsTrack(eventName);
+  }
+
+  saveDataAction(eventName: string) {
+    this.callToActionsService.saveDataAction(eventName, this.dataIp);
   }
 
   getIp() {

@@ -66,9 +66,9 @@
   width: 1em;
   height: 1em;
   font-size: 40px;
-  background-color: $darkCyanTwo;
+  background-color: $darkCyan;
   border-radius: 0.5em;
-  box-shadow: 0 0 0 0em rgba($darkCyanTwo, 0), 0em 0.05em 0.1em rgba(#000000, 0.2);
+  box-shadow: 0 0 0 0em rgba($darkCyan, 0), 0em 0.05em 0.1em rgba(#000000, 0.2);
   transform: translate3d(0, 0, 0) scale(1);
 
   &.icon-whatsapp {

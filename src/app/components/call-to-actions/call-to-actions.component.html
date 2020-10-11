@@ -1,8 +1,10 @@
 <div class="ps-call-to-actions">
   <a
-    class="call-to-action call-to-action--call animate__animated animate__zoomIn animate__delay-2s"
+    class="call-to-action call-to-action--call animate__animated animate__fadeInUp animate__delay-4s"
     href="tel:{{ phone }}"
-    (click)="sendTrack('llamada-flotante'); saveDataAction('llamada-flotante')"
+    (click)="
+      saveAnalyticsTrack('llamada-flotante'); saveDataAction('llamada-flotante')
+    "
   >
     <div class="call-to-action__text">
       <span class="call-to-action__text--label">Llama ahora!</span>
@@ -14,10 +16,11 @@
   </a>
 
   <a
-    class="call-to-action call-to-action--whatsapp animate__animated animate__zoomIn animate__delay-3s"
+    class="call-to-action call-to-action--whatsapp animate__animated animate__fadeInUp animate__delay-4s"
     href="https://api.whatsapp.com/send?phone={{ phone }}"
     (click)="
-      sendTrack('whatsapp-flotante'); saveDataAction('whatsapp-flotante')
+      saveAnalyticsTrack('whatsapp-flotante');
+      saveDataAction('whatsapp-flotante')
     "
   >
     <div class="call-to-action__text">

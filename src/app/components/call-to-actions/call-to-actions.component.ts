@@ -6,7 +6,6 @@ import {
   OnChanges
 } from '@angular/core';
 
-import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 import { CallToActionsService } from '../../services/call-to-actions.service';
 @Component({
   selector: 'ps-call-to-actions',
@@ -17,10 +16,7 @@ export class CallToActionsComponent implements OnInit, OnChanges {
   phone = '+57-311-4386970';
   @Input() dataIp: any;
 
-  constructor(
-    private googleAnalyticsService: GoogleAnalyticsService,
-    private callToActionsService: CallToActionsService
-  ) {}
+  constructor(private callToActionsService: CallToActionsService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes.dataIp && changes.dataIp.currentValue) {
@@ -30,32 +26,11 @@ export class CallToActionsComponent implements OnInit, OnChanges {
 
   ngOnInit() {}
 
-  sendTrack(eventName: string): void {
-    this.googleAnalyticsService.eventEmitter(
-      eventName,
-      'actions',
-      'click',
-      eventName
-    );
+  saveAnalyticsTrack(eventName: string): void {
+    this.callToActionsService.saveAnalyticsTrack(eventName);
   }
 
   saveDataAction(eventName: string) {
-    const currentDate = new Date();
-    const date = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
-    const data = {
-      ...this.dataIp,
-      date: date,
-      dateJson: currentDate.toJSON(),
-      eventName: eventName,
-      timestamp: currentDate
-    };
-    this.callToActionsService
-      .createData(data)
-      .then(res => {
-        // console.log('firebase store SUCCESS');
-      })
-      .catch(res => {
-        console.log('Store ERROR', res);
-      });
+    this.callToActionsService.saveDataAction(eventName, this.dataIp);
   }
 }
