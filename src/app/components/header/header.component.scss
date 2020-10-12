@@ -1,14 +1,20 @@
 header {
-  height: 3.5rem;
+  height: 48px;
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  @media (min-width: 768px) {
+    padding: 0 40px;
+  }
   .ps-logo {
     position: relative;
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 1rem;
+    padding: 0 1.25rem;
     height: 100%;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
     cursor: pointer;
     h1 {
       color: #ffffff;

@@ -1,74 +1,62 @@
 <div class="ps-main">
-  <!-- <div class="ps-main__ink">
-    <i class="ps-ink"></i>
-  </div> -->
-  <div
-    class="ps-main__data"
-    itemscope
-    itemtype="http://schema.org/LocalBusiness"
-  >
-    <div class="ps-main__title animate__animated animate__fadeInDown">
-      <h1 itemprop="description">
-        Mantenimiento y Venta de Suministros para Impresoras.
-      </h1>
+  <div class="ps-main__wrapper-image-title">
+    <div class="ps-main__image">
+      <img
+        class="animate__animated animate__fadeInDown"
+        src="https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fprinter.jpg?alt=media&token=6ae12ab2-5378-4f59-8b00-01e7659c0a12"
+      />
     </div>
-    <div
-      class="ps-main__item ps-main__item--description animate__animated animate__fadeInDown animate__delay-1s"
-    >
-      <p
-        itemprop="description"
-        *ngFor="let text of descriptions; let i = index"
-        class="ps-main__item--description__text ps-main__item--description__text--{{
-          i + 1
-        }} animate__animated"
-      >
-        {{ text.text }}
-      </p>
-    </div>
-    <div
-      class="ps-main__funcy-button animate__animated animate__fadeInLeft animate__delay-2s"
-    >
-      <a
-        href="tel:{{ phone }}"
-        class="funcy-button "
-        (click)="
-          animationClass = 'active';
-          saveAnalyticsTrack('llamada-pagina-inicial');
-          saveDataAction('llamada-flotante')
-        "
-        [ngClass]="animationClass"
-        (animationend)="animationClass = ''"
-      >
-        <div class="left-frills frills"></div>
-        <div class="button">
-          <i class="icon-phone"></i>
-          <div>
-            <span class="button__label">Agenda tu servicio</span>
-            <span class="button__number">311 438 69 70</span>
-          </div>
-        </div>
-        <div class="right-frills frills"></div>
-      </a>
-    </div>
-  </div>
 
-  <!-- <div class="ps-main__ilustration-actions">
     <div
-      class="ps-main__ilustration animate__animated animate__fadeInLeft animate__delay-1s"
+      class="ps-main__data"
+      itemscope
+      itemtype="http://schema.org/LocalBusiness"
     >
-      <div class="ps-ilustration "></div>
-      <div class="scene">
-        <div class="cube">
-          <div class="side back"></div>
-          <div class="side left"></div>
-          <div class="side right"></div>
-          <div class="side top"></div>
-          <div class="side bottom"></div>
-          <div class="side front"></div>
-        </div>
+      <div class="ps-main__title animate__animated animate__fadeInDown">
+        <h1 itemprop="description">
+          Mantenimiento y Venta de Suministros para Impresoras.
+        </h1>
+      </div>
+      <div
+        class="ps-main__item ps-main__item--description animate__animated animate__fadeInDown animate__delay-1s"
+      >
+        <p
+          itemprop="description"
+          *ngFor="let text of descriptions; let i = index"
+          class="ps-main__item--description__text ps-main__item--description__text--{{
+            i + 1
+          }} animate__animated"
+        >
+          {{ text.text }}
+        </p>
+      </div>
+      <div
+        class="ps-main__funcy-button animate__animated animate__fadeInLeft animate__delay-2s"
+      >
+        <a
+          href="tel:{{ phone }}"
+          class="funcy-button "
+          (click)="
+            animationClass = 'active';
+            saveAnalyticsTrack('llamada-pagina-inicial');
+            saveDataAction('llamada-flotante')
+          "
+          [ngClass]="animationClass"
+          (animationend)="animationClass = ''"
+        >
+          <div class="left-frills frills"></div>
+          <div class="button">
+            <i class="icon-phone"></i>
+            <div>
+              <span class="button__label">Agenda tu servicio</span>
+              <span class="button__number">311 438 69 70</span>
+            </div>
+          </div>
+          <div class="right-frills frills"></div>
+        </a>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <div class="ps-main__who">
     <h2>QUIÉNES SOMOS</h2>
@@ -79,6 +67,10 @@
       también la venta de Toners, tintas, cartuchos originales y genéricos
       optimizando costos al momento de sus impresiones.
     </p>
+  </div>
+  <div class="ps-main__gallery">
+    <h2>GALERÍA</h2>
+    <ps-gallery></ps-gallery>
   </div>
 
   <!-- <div class="ps-main__maps-and-data">

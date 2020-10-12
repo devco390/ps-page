@@ -10,9 +10,33 @@
   width: 100%;
   height: 100%;
   max-width: 1152px;
-  padding-left: 40px;
-  padding-right: 40px;
   margin: auto;
+
+  &__wrapper-image-title {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100%;
+    @media (min-width: 768px) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (min-width: 768px) {
+      height: 320px;
+    }
+    img {
+      width: auto;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
 
   h2 {
     font-size: 24px;
@@ -21,14 +45,21 @@
     text-align: center;
   }
 
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 40px;
+    align-items: center;
+    width: 100%;
+  }
+
   &__who {
     display: flex;
-    padding: 1rem 1rem;
+    padding: 1rem 40px;
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
     p {
-      font-size: 22px;
       padding: 0;
       margin: 0;
       text-align: center;
@@ -39,54 +70,11 @@
     }
   }
 
-  &__ink {
-    position: absolute;
-    width: 100%;
-    height: 290px;
-    @media (min-width: 768px) {
-      height: 338px;
-    }
-    .ps-ink {
-      background: url("src/assets/images/background.svg") no-repeat;
-      background-size: cover;
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      background-position-y: calc(100% - 0px);
-    }
-  }
-  &__ilustration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-    .ps-ilustration {
-      background: url("src/assets/images/printer.svg") no-repeat;
-      background-size: cover;
-      display: inline-block;
-      width: 300px;
-      height: 184px;
-      z-index: 10;
-    }
-  }
   &__data {
     color: #ffffff;
-    height: auto;
-    min-height: 100%;
-    // height: calc(100vh - 80px);
     position: relative;
-    padding-top: 40px;
-    // &::before {
-    //   content: " ";
-    //   position: absolute;
-    //   background-repeat: no-repeat;
-    //   background-size: 100% 100%;
-    //   height: 80%;
-    //   width: 100%;
-    //   opacity: 0.9;
-    //   object-fit: contain;
-    //   // background-image: url("../../../assets/images/photos/IMG_6330.JPG");
-    // }
+    padding: 1rem 40px;
+
     &--info {
       color: $darkColor;
       display: flex;
@@ -127,17 +115,15 @@
       display: flex;
       justify-content: center;
       flex-direction: column;
-      // padding: 32px 16px 0 16px;
 
       h1 {
         color: $darkCyanTwo;
-        font-size: 40px;
+        font-size: 32px;
         line-height: 1.1em;
         text-align: left;
-        // width: 220px;
         @media (min-width: 768px) {
           font-size: 64px;
-          width: 478px;
+          width: 800px;
         }
       }
     }
@@ -162,7 +148,7 @@
       justify-content: flex-start;
       padding: 1rem 0;
       position: relative;
-      height: 113px;
+      height: 73px;
       &__text {
         position: absolute;
         top: 0;
@@ -172,11 +158,12 @@
         padding: 1rem 0;
         margin: 0;
         text-align: left;
-        color: $blackText;
-        font-size: 24px;
+        color: darken($darkCyan, 30%);
+        font-size: 20px;
         max-width: 480px;
-        font-weight: 600;
-        height: 81px;
+        font-weight: 400;
+        line-height: 1.5em;
+        height: 41px;
       }
       .hide {
         display: none;
@@ -196,6 +183,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 1rem 1rem 0;
+    z-index: 10;
   }
   &__maps-and-data {
     display: flex;
@@ -223,10 +211,10 @@
 }
 
 //funcy button
-$button-width: 180px;
-$button-height: 65px;
+$button-width: 144px;
+$button-height: auto;
 $button-color: $darkCyanTwo;
-$button-font-size: 1rem;
+$button-font-size: 12px;
 
 $frill-vert-space: 45px; //vertical spacing between frills
 $frill-horizontal-offset: 14px; //initial offset
@@ -245,12 +233,9 @@ $timing-function: ease-out;
   border-radius: 9px;
   color: white;
   cursor: pointer;
-  font-weight: 600;
-  // font-family: Roboto;
   font-size: $button-font-size;
   height: $button-height;
   letter-spacing: 0.2px;
-  // line-height: $button-height;
   text-align: center;
   text-transform: uppercase;
   user-select: none;
@@ -261,8 +246,8 @@ $timing-function: ease-out;
   align-items: center;
   justify-content: center;
   .icon-phone {
-    height: 32px;
-    width: 32px;
+    height: 26px;
+    width: 24px;
     background: url("src/assets/images/phone-cyan_old.svg") no-repeat;
     background-position: 50% 50%;
     background-repeat: no-repeat;

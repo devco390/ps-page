@@ -1,0 +1,22 @@
+<div class="gallery">
+  <div class="row">
+    <img
+      *ngFor="let image of images; let i = index"
+      [src]="image"
+      (click)="openModal(); changeImage(i)"
+      alt="Printer Image"
+    />
+  </div>
+</div>
+
+<div class="lightboxContainer">
+  <div class="lightbox">
+    <div class="close" (click)="closeModal()">&#10006;</div>
+
+    <div class="prev" (click)="nextSlide(-1)">&#60;</div>
+    <div class="activeImage">
+      <img name="activeImage" src="" alt="" />
+    </div>
+    <div class="next" (click)="nextSlide(1)">&#62;</div>
+  </div>
+</div>

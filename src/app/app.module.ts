@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ActionsTrackingComponent } from './components/actions-tracking/actions-tracking.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ActionsTrackingComponent } from './components/actions-tracking/actions-
     ActionsTrackingComponent,
     SidebarComponent,
     CallToActionsComponent,
+    GalleryComponent,
     NotFoundComponent,
     BackgroundComponent,
     MapsComponent
