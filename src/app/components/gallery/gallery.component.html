@@ -1,7 +1,7 @@
 <div class="gallery">
   <div class="row">
     <img
-      *ngFor="let image of images; let i = index"
+      *ngFor="let image of imagesSmall; let i = index"
       [src]="image"
       (click)="openModal(); changeImage(i)"
       alt="Printer Image"

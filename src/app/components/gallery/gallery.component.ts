@@ -18,6 +18,17 @@ export class GalleryComponent implements OnInit {
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2FIMG_6305.jpg?alt=media&token=d19ff4bc-0915-4bf6-ab8c-02bcb999c6fa',
     'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2FIMG_6317.jpg?alt=media&token=80f4b538-f6cf-43f5-b471-9315b11981f1'
   ];
+  imagesSmall = [
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2Fshutterstock_242497756.jpg?alt=media&token=c2857bec-c4f2-4c81-850c-dc8436af103f',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2Fshutterstock_1719513457.jpg?alt=media&token=44e502d5-ce71-46bd-ade5-143e8517bd54',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2Fshutterstock_1347514346.jpg?alt=media&token=57568d4f-0506-4c8b-9bca-2aea8c307705',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2Fshutterstock_1158108100.jpg?alt=media&token=dd52fa09-9bff-41b2-9690-48eb10759190',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6363.jpg?alt=media&token=1ba5a901-1e54-4340-bafe-bee73bdd87c5',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6333.jpg?alt=media&token=acecdf77-9b97-4233-84cf-85e634a8045e',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6317.jpg?alt=media&token=76cc17da-973f-4ecc-94bc-622944cee802',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6311.jpg?alt=media&token=2e750e47-80ca-4145-bdc5-8b4fb0997db1',
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fsmall%2FIMG_6305.jpg?alt=media&token=09d9b31c-ae9f-4854-9a1a-dd6365fc5987'
+  ];
   currentSlide = 0;
   document: any;
 
