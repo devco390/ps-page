@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 declare var gtag;
 
@@ -11,16 +12,21 @@ declare var gtag;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router) {
-    const navEndEvents$ = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    );
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      const navEndEvents$ = this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      );
 
-    navEndEvents$.subscribe((event: NavigationEnd) => {
-      gtag('config', 'UA-177560620-1', {
-        page_path: event.urlAfterRedirects
+      navEndEvents$.subscribe((event: NavigationEnd) => {
+        gtag('config', 'UA-177560620-1', {
+          page_path: event.urlAfterRedirects
+        });
       });
-    });
+    }
   }
 
   ngOnInit() {

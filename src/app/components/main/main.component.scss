@@ -17,9 +17,8 @@
   &__wrapper-image-title {
     display: flex;
     flex-direction: column;
-    height: auto;
+    height: calc(100vh - 48px);
     min-height: 100%;
-    margin-bottom: 40px;
     @media (min-width: 768px) {
       flex-direction: row-reverse;
     }

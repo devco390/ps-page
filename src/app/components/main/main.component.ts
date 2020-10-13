@@ -1,9 +1,15 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Inject,
+  OnDestroy,
+  PLATFORM_ID
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { FirestoreService } from 'src/app/services/ip-tracker.service';
 import { CallToActionsService } from 'src/app/services/call-to-actions.service';
-import { fromEvent, Subject } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { sampleTime, map } from 'rxjs/operators';
 
 @Component({
@@ -43,36 +49,47 @@ export class MainComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private firestoreService: FirestoreService,
     private callToActionsService: CallToActionsService,
-    @Inject(DOCUMENT) _document: any
+    @Inject(DOCUMENT) _document: any,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.document = _document;
   }
 
   ngOnInit() {
-    this.getIp();
-    setTimeout(() => {
-      this.changeFadeIn();
-    }, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      this.getIp();
+      setTimeout(() => {
+        this.changeFadeIn();
+      }, 0);
+    }
   }
 
   ngAfterViewInit(): void {
-    const tracker = document.querySelector('.ps-main');
-    const callToActions = document.querySelector('.ps-main__call-to-actions');
-    const scroll$ = fromEvent(tracker, 'scroll').pipe(
-      sampleTime(300),
-      map(() => tracker)
-    );
-    this.scrollSubscription = scroll$.subscribe(tracker => {
-      if (tracker.scrollTop === tracker.scrollHeight - tracker.clientHeight) {
-        callToActions.classList.add('ps-main__call-to-actions--fixed-limit');
-      } else {
-        callToActions.classList.remove('ps-main__call-to-actions--fixed-limit');
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      const tracker = this.document.querySelector('.ps-main');
+      const callToActions = this.document.querySelector(
+        '.ps-main__call-to-actions'
+      );
+      const scroll$ = fromEvent(tracker, 'scroll').pipe(
+        sampleTime(300),
+        map(() => tracker)
+      );
+      this.scrollSubscription = scroll$.subscribe(tracker => {
+        if (tracker.scrollTop === tracker.scrollHeight - tracker.clientHeight) {
+          callToActions.classList.add('ps-main__call-to-actions--fixed-limit');
+        } else {
+          callToActions.classList.remove(
+            'ps-main__call-to-actions--fixed-limit'
+          );
+        }
+      });
+    }
   }
 
   ngOnDestroy() {
-    this.scrollSubscription.unsubscribe();
+    if (isPlatformBrowser(this.platformId)) {
+      this.scrollSubscription.unsubscribe();
+    }
   }
 
   changeFadeIn() {
@@ -83,7 +100,9 @@ export class MainComponent implements OnInit, OnDestroy {
       this.animationClass = 'active';
       this.toFadeIn = 1;
     }
-    let els = document.querySelectorAll('.ps-main__item--description__text');
+    let els = this.document.querySelectorAll(
+      '.ps-main__item--description__text'
+    );
     for (let i = 0; i < els.length; i += 1) {
       const el = els[i];
 

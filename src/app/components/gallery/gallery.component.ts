@@ -40,7 +40,7 @@ export class GalleryComponent implements OnInit {
   }
 
   changeImage(n) {
-    this.document.activeImage.src = this.images[n];
+    this.document.querySelector('#activeImage').src = this.images[n];
     this.currentSlide = n;
     return this.currentSlide;
   }
@@ -48,7 +48,9 @@ export class GalleryComponent implements OnInit {
   nextSlide(n) {
     if (this.currentSlide < 1 && n == -1) {
       this.currentSlide = this.images.length - 1;
-      this.document.activeImage.src = this.images[this.currentSlide];
+      this.document.querySelector('#activeImage').src = this.images[
+        this.currentSlide
+      ];
       return this.currentSlide;
     } else if (
       this.currentSlide < this.images.length - 1 &&
@@ -56,15 +58,21 @@ export class GalleryComponent implements OnInit {
       n == 1
     ) {
       this.currentSlide = this.currentSlide + 1;
-      this.document.activeImage.src = this.images[this.currentSlide];
+      this.document.querySelector('#activeImage').src = this.images[
+        this.currentSlide
+      ];
       return this.currentSlide;
     } else if (this.currentSlide == this.images.length - 1 && n == 1) {
       this.currentSlide = 0;
-      this.document.activeImage.src = this.images[this.currentSlide];
+      this.document.querySelector('#activeImage').src = this.images[
+        this.currentSlide
+      ];
       return this.currentSlide;
     } else {
       this.currentSlide = this.currentSlide - 1;
-      this.document.activeImage.src = this.images[this.currentSlide];
+      this.document.querySelector('#activeImage').src = this.images[
+        this.currentSlide
+      ];
       return this.currentSlide;
     }
   }

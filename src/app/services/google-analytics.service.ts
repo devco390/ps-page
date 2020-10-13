@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 declare var gtag;
 
@@ -6,7 +7,7 @@ declare var gtag;
   providedIn: 'root'
 })
 export class GoogleAnalyticsService {
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   public eventEmitter(
     eventName: string,
@@ -15,11 +16,13 @@ export class GoogleAnalyticsService {
     eventLabel: string = null,
     eventValue: number = null
   ) {
-    gtag('event', eventName, {
-      eventCategory: eventCategory,
-      eventAction: eventAction,
-      eventLabel: eventLabel,
-      eventValue: eventValue
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      gtag('event', eventName, {
+        eventCategory: eventCategory,
+        eventAction: eventAction,
+        eventLabel: eventLabel,
+        eventValue: eventValue
+      });
+    }
   }
 }
