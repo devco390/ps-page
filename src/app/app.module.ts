@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ActionsTrackingComponent } from './components/actions-tracking/actions-tracking.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     SidebarComponent,
     CallToActionsComponent,
     GalleryComponent,
+    FooterComponent,
     NotFoundComponent,
     BackgroundComponent,
     MapsComponent

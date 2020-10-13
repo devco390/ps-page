@@ -1,15 +1,17 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 import { FirestoreService } from 'src/app/services/ip-tracker.service';
 import { CallToActionsService } from 'src/app/services/call-to-actions.service';
+import { fromEvent, Subject } from 'rxjs';
+import { sampleTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'ps-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   ipSaved = false;
   document: any;
   dataIp: any;
@@ -35,6 +37,8 @@ export class MainComponent implements OnInit {
 
   toFadeIn = this.descriptions.length;
   slideCount = this.descriptions.length;
+  scrollSubscription: any;
+
   constructor(
     private http: HttpClient,
     private firestoreService: FirestoreService,
@@ -51,9 +55,27 @@ export class MainComponent implements OnInit {
     }, 0);
   }
 
-  changeFadeIn() {
-    // setTimeout(() => {}, 3000 * this.descriptions.length);
+  ngAfterViewInit(): void {
+    const tracker = document.querySelector('.ps-main');
+    const callToActions = document.querySelector('.ps-main__call-to-actions');
+    const scroll$ = fromEvent(tracker, 'scroll').pipe(
+      sampleTime(300),
+      map(() => tracker)
+    );
+    this.scrollSubscription = scroll$.subscribe(tracker => {
+      if (tracker.scrollTop === tracker.scrollHeight - tracker.clientHeight) {
+        callToActions.classList.add('ps-main__call-to-actions--fixed-limit');
+      } else {
+        callToActions.classList.remove('ps-main__call-to-actions--fixed-limit');
+      }
+    });
+  }
 
+  ngOnDestroy() {
+    this.scrollSubscription.unsubscribe();
+  }
+
+  changeFadeIn() {
     const toFadeOut = this.toFadeIn;
     this.toFadeIn += 1;
 
