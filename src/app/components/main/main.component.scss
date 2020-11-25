@@ -30,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: 1s ease-in-out fadein;
+    animation: fadeIn ease 3s;
     @media (min-width: 768px) {
       height: 320px;
       width: 320px;
@@ -223,8 +223,14 @@
   0% {
     opacity: 0;
   }
-  66% {
-    opacity: 0;
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
   }
   100% {
     opacity: 1;
@@ -233,7 +239,7 @@
 
 //funcy button
 $button-width: 144px;
-$button-height: auto;
+$button-height: 76px;
 $button-color: $darkCyanTwo;
 $button-font-size: 12px;
 
@@ -251,6 +257,7 @@ $timing-function: ease-out;
 
 .button {
   background: $button-color;
+  box-shadow: 0 8px 6px -6px black;
   border-radius: 9px;
   color: white;
   cursor: pointer;
