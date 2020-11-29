@@ -25,7 +25,7 @@ export class MainComponent implements OnInit, OnDestroy {
   phone = '+57-311-4386970';
 
   descriptions = [
-    { text: 'Mantenimientos Preventivos y Correctivos para Impresoras.' },
+    { text: 'Mantenimientos Preventivos y Correctivos.' },
     { text: '¡Domicilio sin costo en Bogotá!' },
 
     {
