@@ -30,12 +30,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { ActionsTrackingComponent } from './components/actions-tracking/actions-tracking.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     HeaderComponent,
+    BannerComponent,
     IpTrackingComponent,
     ActionsTrackingComponent,
     SidebarComponent,
