@@ -26,7 +26,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   descriptions = [
     { text: 'Mantenimientos Preventivos y Correctivos para Impresoras.' },
-    { text: '¡ Domicilio sin costo en Bogotá !' },
+    { text: '¡Domicilio sin costo en Bogotá!' },
 
     {
       text: 'Venta de Cartuchos, Toner y Tintas.'
@@ -34,11 +34,11 @@ export class MainComponent implements OnInit, OnDestroy {
     {
       text: 'Rehabilitación profesional en piezas de impresoras.'
     },
-    {
-      text: 'Esto Soluciona los problema en un alto porcentaje de casos.'
-    },
-    { text: 'Contamos con técnicos altamente calificados.' },
-    { text: 'Gracias a ellos, garantizamos 100% nuestros servicios.' }
+    // {
+    //   text: 'Esto Soluciona los problema en un alto porcentaje de casos.'
+    // },
+    // { text: 'Contamos con técnicos altamente calificados.' },
+    // { text: 'Gracias a ellos, garantizamos 100% nuestros servicios.' }
   ];
 
   toFadeIn = this.descriptions.length;
@@ -106,20 +106,21 @@ export class MainComponent implements OnInit, OnDestroy {
     for (let i = 0; i < els.length; i += 1) {
       const el = els[i];
 
-      el.classList.remove('animate__fadeInDown', 'animate__fadeOutDown');
+      el.classList.remove('ps-main__item--description__text--animation');
       el.classList.add('hide');
     }
 
-    const elToFadeOut = document.querySelector(
-      `.ps-main__item--description__text--${toFadeOut}`
-    );
-    elToFadeOut.classList.remove('hide');
-    elToFadeOut.classList.add('animate__fadeOutDown');
+    // const elToFadeOut = document.querySelector(
+    //   `.ps-main__item--description__text--${toFadeOut}`
+    // );
+    // elToFadeOut.classList.remove('hide');
+    // elToFadeOut.classList.add('ps-main__item--description__text--animation');
+
     const elToFadeIn = document.querySelector(
       `.ps-main__item--description__text--${this.toFadeIn}`
     );
     elToFadeIn.classList.remove('hide');
-    elToFadeIn.classList.add('animate__fadeInDown');
+    elToFadeIn.classList.add('ps-main__item--description__text--animation');
 
     setTimeout(() => {
       this.changeFadeIn();
