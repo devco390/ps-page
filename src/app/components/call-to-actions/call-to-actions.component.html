@@ -1,6 +1,6 @@
 <div class="ps-call-to-actions">
   <a
-    class="call-to-action call-to-action--call animate__animated animate__fadeInUp animate__delay-4s"
+    class="call-to-action call-to-action--call animate__animated animate__fadeInUp animate__delay-1s"
     href="tel:{{ phone }}"
     (click)="
       saveAnalyticsTrack('llamada-flotante'); saveDataAction('llamada-flotante')
@@ -16,7 +16,7 @@
   </a>
 
   <a
-    class="call-to-action call-to-action--whatsapp animate__animated animate__fadeInUp animate__delay-4s"
+    class="call-to-action call-to-action--whatsapp animate__animated animate__fadeInUp animate__delay-1s"
     href="https://api.whatsapp.com/send?phone={{ phone }}"
     (click)="
       saveAnalyticsTrack('whatsapp-flotante');

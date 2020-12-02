@@ -26,7 +26,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   descriptions = [
     { text: 'Mantenimientos Preventivos y Correctivos.' },
-    { text: '¡Domicilio sin costo en Bogotá!' },
+    { text: 'Domicilio sin costo en Bogotá.' },
 
     {
       text: 'Venta de Cartuchos, Toner y Tintas.'
