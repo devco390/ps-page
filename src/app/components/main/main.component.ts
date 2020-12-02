@@ -32,7 +32,7 @@ export class MainComponent implements OnInit, OnDestroy {
       text: 'Venta de Cartuchos, Toner y Tintas.'
     },
     {
-      text: 'Rehabilitación profesional en piezas de impresoras.'
+      text: 'Rehabilitación Profesional en Piezas de Impresoras.'
     },
     // {
     //   text: 'Esto Soluciona los problema en un alto porcentaje de casos.'
