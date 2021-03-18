@@ -9,26 +9,33 @@ const routes: Routes = [
   {
     path: 'cards',
     loadChildren: () =>
-      import('./components/cards/cards.module').then(mod => mod.CardsModule)
+      import('./components/cards/cards.module').then((mod) => mod.CardsModule),
+  },
+  {
+    path: 'window',
+    loadChildren: () =>
+      import('./components/window/window.module').then(
+        (mod) => mod.WindowModule
+      ),
   },
   { path: '', component: MainComponent, pathMatch: 'full' },
   {
     path: 'mantenimiento-impresoras-bogota',
     component: MainComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   { path: 'ips', component: IpTrackingComponent, pathMatch: 'full' },
   { path: 'actions', component: ActionsTrackingComponent, pathMatch: 'full' },
   { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '/404' }
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      initialNavigation: 'enabled'
-    })
+      initialNavigation: 'enabled',
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
