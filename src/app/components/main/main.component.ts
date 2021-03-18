@@ -3,7 +3,7 @@ import {
   OnInit,
   Inject,
   OnDestroy,
-  PLATFORM_ID
+  PLATFORM_ID,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
@@ -15,7 +15,7 @@ import { sampleTime, map } from 'rxjs/operators';
 @Component({
   selector: 'ps-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit, OnDestroy {
   ipSaved = false;
@@ -29,10 +29,10 @@ export class MainComponent implements OnInit, OnDestroy {
     { text: 'Domicilio sin costo en Bogotá.' },
 
     {
-      text: 'Venta de Cartuchos, Toner y Tintas.'
+      text: 'Venta de Cartuchos, Toner y Tintas.',
     },
     {
-      text: 'Rehabilitación Profesional en Piezas de Impresoras.'
+      text: 'Rehabilitación Profesional en Piezas de Impresoras.',
     },
     // {
     //   text: 'Esto Soluciona los problema en un alto porcentaje de casos.'
@@ -74,8 +74,11 @@ export class MainComponent implements OnInit, OnDestroy {
         sampleTime(300),
         map(() => tracker)
       );
-      this.scrollSubscription = scroll$.subscribe(tracker => {
-        if (tracker.scrollTop === tracker.scrollHeight - tracker.clientHeight) {
+      this.scrollSubscription = scroll$.subscribe((tracker) => {
+        if (
+          Math.round(tracker.scrollTop) ===
+          Math.round(tracker.scrollHeight - tracker.clientHeight)
+        ) {
           callToActions.classList.add('ps-main__call-to-actions--fixed-limit');
         } else {
           callToActions.classList.remove(
@@ -138,7 +141,7 @@ export class MainComponent implements OnInit, OnDestroy {
   getIp() {
     this.ipSaved = sessionStorage['ip-saved-ps'] === undefined ? false : true;
 
-    this.http.get<{ ip: string }>('https://jsonip.com').subscribe(data => {
+    this.http.get<{ ip: string }>('https://jsonip.com').subscribe((data) => {
       this.saveIp(data.ip);
     });
   }
@@ -155,15 +158,15 @@ export class MainComponent implements OnInit, OnDestroy {
       dateJson: currentDate.toJSON(),
       fromF5: fromf5,
       routePath: this.document.location.pathname,
-      timestamp: currentDate
+      timestamp: currentDate,
     };
     sessionStorage['ip-saved-ps'] = this.dataIp;
     this.firestoreService
       .createIpTrack(this.dataIp)
-      .then(res => {
+      .then((res) => {
         // console.log('firebase store SUCCESS');
       })
-      .catch(res => {
+      .catch((res) => {
         console.log('Store ERROR', res);
       });
   }
