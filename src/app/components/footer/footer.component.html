@@ -9,27 +9,33 @@
       <div class="ps-footer__important-information__item">
         <i class="icon icon-phone"></i>
         <label class="ps-footer__copyright">
-          <span itemprop="telephone">311 438 6970</span> -
-          <span itemprop="telephone">4 80 8660</span></label
+          <a href="tel:{{ mobile }}" target="_blank" itemprop="telephone"
+            >311 438 6970</a
+          >
+          -
+          <a href="tel:{{ phone }}" target="_blank" itemprop="telephone"
+            >7 03 7907</a
+          ></label
         >
       </div>
-      <div
+      <a
         class="ps-footer__important-information__item"
         itemprop="address"
+        href="mailto:comercial@printingsolutions.com.co"
+        target="_blank"
         itemscope
         itemtype="http://schema.org/PostalAddress"
       >
         <i class="icon icon-email"></i>
-        <a
-          href="mailto:comercial@printingsolutions.com.co"
-          class="ps-footer__copyright"
-          itemprop="email"
-          >comercial@printingsolutions.com.co</a
+        <label class="ps-footer__copyright" itemprop="email"
+          >comercial@printingsolutions.com.co</label
         >
-      </div>
-      <div
+      </a>
+      <a
         class="ps-footer__important-information__item"
         itemprop="address"
+        href="{{ urlToRedirectGoogleMaps }}"
+        target="_blank"
         itemscope
         itemtype="http://schema.org/PostalAddress"
       >
@@ -37,7 +43,7 @@
         <label class="ps-footer__copyright" itemprop="streetAddress"
           >Carrera 14 # 79 28 - oficina 303, Bogotá, Colombia</label
         >
-      </div>
+      </a>
     </div>
 
     <!-- <span class="ps-footer__copyright">© Copyright 2020 Printing Solutions</span> -->
