@@ -16,16 +16,16 @@ export interface Marker {
 @Component({
   selector: 'ps-maps',
   templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.scss']
+  styleUrls: ['./maps.component.scss'],
 })
 export class MapsComponent implements OnInit {
   styles = mapStyles;
-  lat = 4.7525055;
-  lng = -74.1178649;
+  lat = 4.6651519;
+  lng = -74.058919;
   zoom = 15;
 
   urlToRedirectGoogleMaps =
-    'https://www.google.com/maps/place/PRINTING+SOLUTIONS/@4.7525002,-74.1178649,17z/data=!3m1!4b1!4m5!3m4!1s0x8e3f856f6c01e699:0x72cf39cf5e1ab849!8m2!3d4.7525002!4d-74.1156762';
+    'https://www.google.com/maps/place/Cra.+14+%23%2379-28,+Bogot%C3%A1/@4.665151,-74.058919,17z/data=!3m1!4b1!4m5!3m4!1s0x8e3f9a5f748cde5f:0x76fcf58e20ef66b1!8m2!3d4.6651457!4d-74.0567303';
   @Input() clusterStyles: ClusterStyle[];
   @Input() markers: Marker[] = [];
   @ViewChild('agmMap', { static: false }) agmMap: AgmMap;
@@ -41,8 +41,8 @@ export class MapsComponent implements OnInit {
         url: this.imageUrl,
         width: 54,
         height: 54,
-        textSize: 18
-      }
+        textSize: 18,
+      },
     ];
 
     this.markers.push({
@@ -52,7 +52,7 @@ export class MapsComponent implements OnInit {
       label: 'Mantenimiento y Venta de Suministros para Impresoras',
       infoTitle: 'Printing Solutions',
       icon: this.imageUrl,
-      status: false
+      status: false,
     });
   }
 

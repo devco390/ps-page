@@ -104,16 +104,20 @@
       height: 14px;
       padding-right: 0.5rem;
       &-location {
-        background: url("src/assets/images/location-white.svg") no-repeat center center;
+        background: url("src/assets/images/location-white.svg") no-repeat center
+          center;
       }
       &-phone {
-        background: url("src/assets/images/phone-white.svg") no-repeat center center;
+        background: url("src/assets/images/phone-white.svg") no-repeat center
+          center;
       }
       &-site {
-        background: url("src/assets/images/site-white.svg") no-repeat center center;
+        background: url("src/assets/images/site-white.svg") no-repeat center
+          center;
       }
       &-email {
-        background: url("src/assets/images/email-white.svg") no-repeat center center;
+        background: url("src/assets/images/email-white.svg") no-repeat center
+          center;
       }
     }
     .ps-main__title {
@@ -208,6 +212,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 24px;
+    padding-bottom: 2rem;
   }
   &__maps {
     padding: 16px;
@@ -351,7 +356,8 @@ $timing-function: ease-out;
   right: $button-width + $frill-horizontal-offset;
   top: ($button-height/2)- ($frill-height/2);
   .active & {
-    animation: move-left $speed $timing-function, width-to-zero $speed $timing-function;
+    animation: move-left $speed $timing-function,
+      width-to-zero $speed $timing-function;
   }
 
   &:before,
@@ -360,12 +366,14 @@ $timing-function: ease-out;
   }
   &:before {
     .active & {
-      animation: width-to-zero $speed $timing-function, move-up $speed $timing-function;
+      animation: width-to-zero $speed $timing-function,
+        move-up $speed $timing-function;
     }
   }
   &:after {
     .active & {
-      animation: width-to-zero $speed $timing-function, move-down $speed $timing-function;
+      animation: width-to-zero $speed $timing-function,
+        move-down $speed $timing-function;
     }
   }
 }
@@ -373,7 +381,8 @@ $timing-function: ease-out;
   left: $button-width + $frill-horizontal-offset;
   top: ($button-height/2)- ($frill-height/2);
   .active & {
-    animation: move-right $speed $timing-function, width-to-zero $speed $timing-function;
+    animation: move-right $speed $timing-function,
+      width-to-zero $speed $timing-function;
   }
   &:before,
   &:after {
@@ -381,12 +390,14 @@ $timing-function: ease-out;
   }
   &:before {
     .active & {
-      animation: width-to-zero $speed $timing-function, move-up $speed $timing-function;
+      animation: width-to-zero $speed $timing-function,
+        move-up $speed $timing-function;
     }
   }
   &:after {
     .active & {
-      animation: width-to-zero $speed $timing-function, move-down $speed $timing-function;
+      animation: width-to-zero $speed $timing-function,
+        move-down $speed $timing-function;
     }
   }
 }

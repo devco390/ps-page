@@ -1,21 +1,41 @@
 <footer class="ps-footer">
   <div class="ps-footer__wrapper">
-    <div class="ps-footer__important-information">
+    <div
+      class="ps-footer__important-information"
+      itemscope
+      itemtype="http://schema.org/LocalBusiness"
+    >
       <h4>INFORMACIÓN DE CONTACTO</h4>
       <div class="ps-footer__important-information__item">
         <i class="icon icon-phone"></i>
-        <span class="ps-footer__copyright">311 438 6970 - 4 80 8660</span>
+        <label class="ps-footer__copyright">
+          <span itemprop="telephone">311 438 6970</span> -
+          <span itemprop="telephone">4 80 8660</span></label
+        >
       </div>
-      <div class="ps-footer__important-information__item">
+      <div
+        class="ps-footer__important-information__item"
+        itemprop="address"
+        itemscope
+        itemtype="http://schema.org/PostalAddress"
+      >
         <i class="icon icon-email"></i>
-        <span class="ps-footer__copyright"
-          >comercial@printingsolutions.com.co
-        </span>
+        <a
+          href="mailto:comercial@printingsolutions.com.co"
+          class="ps-footer__copyright"
+          itemprop="email"
+          >comercial@printingsolutions.com.co</a
+        >
       </div>
-      <div class="ps-footer__important-information__item">
+      <div
+        class="ps-footer__important-information__item"
+        itemprop="address"
+        itemscope
+        itemtype="http://schema.org/PostalAddress"
+      >
         <i class="icon icon-location"></i>
-        <span class="ps-footer__copyright"
-          >Carrera 14 # 79 28 - oficina 303, Bogotá, Colombia</span
+        <label class="ps-footer__copyright" itemprop="streetAddress"
+          >Carrera 14 # 79 28 - oficina 303, Bogotá, Colombia</label
         >
       </div>
     </div>

@@ -25,7 +25,8 @@
         justify-content: flex-start;
         align-items: center;
         padding-bottom: 8px;
-        span {
+        label,
+        a {
           font-size: 12px;
           margin-left: 8px;
           line-height: 14px;
@@ -34,7 +35,8 @@
     }
   }
 
-  &__copyright {
+  &__copyright,
+  a {
     color: #787878;
   }
 
