@@ -63,7 +63,15 @@
               <span class="button__label">¡Llama Ahora!</span>
             </a>
           </button>
-          <span class="ps-main__advice-phone">{{ phoneShort }}</span>
+          <a
+            class="ps-main__advice-phone"
+            href="tel:{{ phone }}"
+            (click)="
+              saveAnalyticsTrack('llamada-pagina-inicial');
+              saveDataAction('llamada-flotante')
+            "
+            >{{ phoneShort }}</a
+          >
         </div>
       </div>
     </section>
