@@ -41,17 +41,11 @@ export class AppComponent implements OnInit {
 
     console.log(
       `======================================
-Hay cosas peores que estar solo      
-pero a menudo toma décadas darse cuenta de ello      
-y más a menudo cuando esto ocurre      
-es demasiado tarde      
-y no hay nada peor      
-que un "demasiado tarde".
+Porque se que en las nostalgias llegas, y no dices NADA...
+https://youtu.be/yLWZ8XrdBVg
 
-(¡OH, SI! - Charles Bukowski)
 
-https://www.youtube.com/watch?v=rAR7GORSL3M
-
+“Nunca intentes ganar por la fuerza lo que se puede ganar mediante el engaño”. N.M.
 ======================================`
     );
   }
