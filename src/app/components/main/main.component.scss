@@ -49,7 +49,6 @@
           stroke-dasharray: 95;
           stroke-dashoffset: 95;
           transition: all 9s linear;
-          // animation: load linear 9s infinite;
           &.active {
             stroke-dashoffset: 0;
           }
@@ -116,7 +115,7 @@
     top: 124px;
     animation: fadeIn ease 1s, float ease-in-out 6s infinite;
     z-index: 10;
-    opacity: 0.4;
+    opacity: 0.6;
     padding-left: 0;
     @media (min-width: $breakPointTb) {
       padding-left: 3rem;
