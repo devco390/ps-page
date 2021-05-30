@@ -4,13 +4,14 @@ import {
   Inject,
   OnDestroy,
   PLATFORM_ID,
+  Input,
 } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { FirestoreService } from 'src/app/services/ip-tracker.service';
+
 import { CallToActionsService } from 'src/app/services/call-to-actions.service';
 import { fromEvent } from 'rxjs';
 import { sampleTime, map } from 'rxjs/operators';
+import { IpService } from 'src/app/services/ip.service';
 
 @Component({
   selector: 'ps-main',
@@ -21,24 +22,20 @@ export class MainComponent implements OnInit, OnDestroy {
   ipSaved = false;
   document: any;
   dataIp: any;
-  animationClass = '';
   phone = '+57-311-4386970';
+  phoneShort = '311 438 69 70';
 
   descriptions = [
-    { text: 'Mantenimientos Preventivos y Correctivos.' },
-    { text: 'Domicilio sin costo en Bogotá.' },
-
     {
-      text: 'Venta de Cartuchos, Toner y Tintas.',
+      title: 'Mantenimientos',
+      text:
+        'Mantenimientos Preventivos y Correctivos de impresoras en su casa u oficina.',
     },
     {
-      text: 'Rehabilitación Profesional en Piezas de Impresoras.',
+      title: 'Venta de Suministros',
+      text: 'Venta de Cartuchos, Tóner y Tintas.',
     },
-    // {
-    //   text: 'Esto Soluciona los problema en un alto porcentaje de casos.'
-    // },
-    // { text: 'Contamos con técnicos altamente calificados.' },
-    // { text: 'Gracias a ellos, garantizamos 100% nuestros servicios.' }
+    { title: 'Recargas', text: 'Recarga de Tóner y Cartuchos.' },
   ];
 
   toFadeIn = this.descriptions.length;
@@ -46,18 +43,17 @@ export class MainComponent implements OnInit, OnDestroy {
   scrollSubscription: any;
 
   constructor(
-    private http: HttpClient,
-    private firestoreService: FirestoreService,
     private callToActionsService: CallToActionsService,
     @Inject(DOCUMENT) _document: any,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: any,
+    private ipService: IpService
   ) {
     this.document = _document;
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.getIp();
+      this.dataIp = await this.ipService.getIp();
       setTimeout(() => {
         this.changeFadeIn();
       }, 0);
@@ -100,34 +96,53 @@ export class MainComponent implements OnInit, OnDestroy {
     this.toFadeIn += 1;
 
     if (this.toFadeIn > this.slideCount) {
-      this.animationClass = 'active';
       this.toFadeIn = 1;
     }
-    let els = this.document.querySelectorAll(
+    let cards = this.document.querySelectorAll(
       '.ps-main__item--description__text'
     );
-    for (let i = 0; i < els.length; i += 1) {
-      const el = els[i];
 
-      el.classList.remove('ps-main__item--description__text--animation');
-      el.classList.add('hide');
-    }
+    [...cards].map((card, index) => {
+      card.classList.remove('animate__fadeInDown', 'animate__fadeOutDown');
+      card.classList.add('hide');
+      this.removeTimerCard(index + 1);
+    });
 
-    // const elToFadeOut = document.querySelector(
-    //   `.ps-main__item--description__text--${toFadeOut}`
-    // );
-    // elToFadeOut.classList.remove('hide');
-    // elToFadeOut.classList.add('ps-main__item--description__text--animation');
+    //card fadeOut
+    const elToFadeOut = document.querySelector(
+      `.ps-main__item--description__text--${toFadeOut}`
+    );
 
+    elToFadeOut.classList.remove('hide');
+    elToFadeOut.classList.add('animate__fadeOutDown');
+
+    //card fadeIn
     const elToFadeIn = document.querySelector(
       `.ps-main__item--description__text--${this.toFadeIn}`
     );
+
+    this.initTimerCard(this.toFadeIn);
+
     elToFadeIn.classList.remove('hide');
-    elToFadeIn.classList.add('ps-main__item--description__text--animation');
+    elToFadeIn.classList.add('animate__fadeInDown');
 
     setTimeout(() => {
       this.changeFadeIn();
-    }, 3000);
+    }, 9000);
+  }
+
+  removeTimerCard(index) {
+    const timer = document.querySelector(
+      `.icon-timer__circle-animation--${index}`
+    );
+    timer.classList.remove('active');
+  }
+
+  initTimerCard(index) {
+    const timer = document.querySelector(
+      `.icon-timer__circle-animation--${index}`
+    );
+    timer.classList.add('active');
   }
 
   saveAnalyticsTrack(eventName: string): void {
@@ -136,38 +151,5 @@ export class MainComponent implements OnInit, OnDestroy {
 
   saveDataAction(eventName: string) {
     this.callToActionsService.saveDataAction(eventName, this.dataIp);
-  }
-
-  getIp() {
-    this.ipSaved = sessionStorage['ip-saved-ps'] === undefined ? false : true;
-
-    this.http.get<{ ip: string }>('https://jsonip.com').subscribe((data) => {
-      this.saveIp(data.ip);
-    });
-  }
-
-  saveIp(ip: string) {
-    const fromf5 = this.ipSaved ? true : false;
-    const currentDate = new Date();
-
-    const date = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
-
-    this.dataIp = {
-      ip: ip,
-      date: date,
-      dateJson: currentDate.toJSON(),
-      fromF5: fromf5,
-      routePath: this.document.location.pathname,
-      timestamp: currentDate,
-    };
-    sessionStorage['ip-saved-ps'] = this.dataIp;
-    this.firestoreService
-      .createIpTrack(this.dataIp)
-      .then((res) => {
-        // console.log('firebase store SUCCESS');
-      })
-      .catch((res) => {
-        console.log('Store ERROR', res);
-      });
   }
 }

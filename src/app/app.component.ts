@@ -3,33 +3,42 @@ import { Router, NavigationEnd } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
+import { IpService } from './services/ip.service';
 
 declare var gtag;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  ipSaved = false;
+  dataIp: any;
+
   constructor(
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: any,
+    private ipService: IpService
   ) {
     if (isPlatformBrowser(this.platformId)) {
       const navEndEvents$ = this.router.events.pipe(
-        filter(event => event instanceof NavigationEnd)
+        filter((event) => event instanceof NavigationEnd)
       );
 
       navEndEvents$.subscribe((event: NavigationEnd) => {
         gtag('config', 'UA-177560620-1', {
-          page_path: event.urlAfterRedirects
+          page_path: event.urlAfterRedirects,
         });
       });
     }
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.dataIp = await this.ipService.getIp();
+    }
+
     console.log(
       `======================================
 Hay cosas peores que estar solo      
@@ -51,12 +60,12 @@ https://www.youtube.com/watch?v=rAR7GORSL3M
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .getRegistrations()
-        .then(function(registrations) {
+        .then(function (registrations) {
           for (let registration of registrations) {
             registration.unregister();
           }
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log('Service Worker registration failed: ', err);
         });
     }

@@ -1,6 +1,8 @@
-<div class="ps-banner__wrapper">
-  <label class="ps-banner__text"
-    >Servicio Técnico de Impresoras en su Casa u Oficina, Domicilio sin
-    Costo.</label
-  >
+<div class="ps-banner ps-banner__wrapper">
+  <div class="ps-banner__tooltip">
+    <ps-tooltip [text]="tooltipText"> </ps-tooltip>
+  </div>
+  <div class="ps-banner__call-to-actions">
+    <ps-call-to-actions [dataIp]="dataIp"> </ps-call-to-actions>
+  </div>
 </div>

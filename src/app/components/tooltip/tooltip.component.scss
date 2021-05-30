@@ -1,0 +1,38 @@
+@import "../../../variables";
+
+.ps-tooltip {
+  align-items: center;
+  background: $primaryCyan;
+  border: 1px solid $primaryCyan;
+  border-radius: 12px;
+  color: #000000;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 38px;
+  justify-content: center;
+  opacity: 1;
+  padding: 0 1rem;
+  pointer-events: none;
+  position: relative;
+  transition: all 0.25s ease-out;
+  width: 100%;
+  &:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid $primaryCyan 10px;
+    bottom: -10px;
+    content: " ";
+    height: 0;
+    right: 16px;
+    margin-left: -13px;
+    position: absolute;
+    width: 0;
+  }
+  img {
+    height: 28px;
+    margin-right: 0.5rem;
+    transform: scaleX(-1);
+    width: 28px;
+  }
+}

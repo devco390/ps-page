@@ -5,27 +5,27 @@
   flex-direction: column;
   height: 100%;
   padding: 0;
-  box-sizing: border-box;
   &__wrapper {
     display: flex;
     flex-direction: column;
-    // background-color: $darkColor;
-    background-color: $whiteColor;
-    border-radius: 4px;
+    background-color: $backgroundColor;
     height: 100%;
     .ps-header {
-      background-color: $darkColor;
+      background-color: #000000;
     }
     .ps-banner {
-      background-color: $darkCyanTwo;
-      background-color: $darkCyan;
+      background: rgb(144, 254, 254);
+      background: linear-gradient(
+        180deg,
+        rgba(144, 254, 254, 0.2) 0%,
+        rgba(28, 28, 28, 1) 100%
+      );
     }
     .ps-main {
       position: relative;
       width: 100%;
       display: flex;
       flex-direction: column;
-      box-sizing: border-box;
       flex: 1 1 auto;
       overflow: auto;
     }

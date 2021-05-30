@@ -1,21 +1,21 @@
 @import "../../../variables";
 
 .ps-footer {
-  background: #f7f7f7;
+  background: #000000;
 
   &__wrapper {
     max-width: 1152px;
     margin: auto;
     height: 100%;
     padding: 1.5rem;
-    @media (min-width: 768px) {
+    @media (min-width: $breakPointTb) {
       padding: 1.5rem 0;
     }
     .ps-footer__important-information {
       display: flex;
       flex-direction: column;
       h4 {
-        color: $darkCyanTwo;
+        color: $primaryCyan;
         padding-bottom: 1rem;
         font-size: 14px;
         margin: 0;
@@ -27,6 +27,7 @@
         padding-bottom: 8px;
         label,
         > a {
+          color: #ffffff;
           font-size: 12px;
           margin-left: 8px;
           line-height: 14px;
@@ -38,7 +39,7 @@
 
   &__copyright,
   a {
-    color: #787878;
+    color: #ffffff;
   }
 
   .icon {

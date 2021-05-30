@@ -1,60 +1,69 @@
 <div class="ps-main">
   <div class="ps-main__sections">
-    <section class="ps-main__wrapper-image-title">
-      <div class="ps-main__image">
-        <img
-          class=""
-          src="https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fprinter.jpg?alt=media&token=6ae12ab2-5378-4f59-8b00-01e7659c0a12"
-        />
-      </div>
+    <section class="ps-main__main-wrapper">
+      <div class="ps-main__main-grid">
+        <div
+          class="ps-main__data"
+          itemscope
+          itemtype="http://schema.org/LocalBusiness"
+        >
+          <div class="ps-main__title animate__animated animate__fadeInDown">
+            <h1 itemprop="description">
+              Mantenimiento de Impresoras <span>en su casa u oficina.</span>
+            </h1>
+          </div>
+          <div
+            class="ps-main__item ps-main__item--description animate__animated animate__fadeInDown"
+          >
+            <div
+              *ngFor="let text of descriptions; let i = index"
+              class="ps__card ps-main__item--description__text ps-main__item--description__text--{{
+                i + 1
+              }} animate__animated"
+            >
+              <h2>{{ text.title }}</h2>
+              <div class="ps__card__wrapper-description">
+                <p itemprop="description">
+                  {{ text.text }}
+                </p>
 
-      <div
-        class="ps-main__data"
-        itemscope
-        itemtype="http://schema.org/LocalBusiness"
-      >
-        <div class="ps-main__title animate__animated animate__fadeInDown">
-          <h1 itemprop="description">
-            Venta de suministros y Mantenimiento para impresoras.
-          </h1>
-        </div>
-        <div
-          class="ps-main__item ps-main__item--description animate__animated animate__fadeInDown"
-        >
-          <p
-            itemprop="description"
-            *ngFor="let text of descriptions; let i = index"
-            class="ps-main__item--description__text ps-main__item--description__text--{{
-              i + 1
-            }}"
-          >
-            {{ text.text }}
-          </p>
-        </div>
-        <div
-          class="ps-main__funcy-button animate__animated animate__fadeInLeft"
-        >
-          <a
-            href="tel:{{ phone }}"
-            class="funcy-button"
-            (click)="
-              animationClass = 'active';
-              saveAnalyticsTrack('llamada-pagina-inicial');
-              saveDataAction('llamada-flotante')
-            "
-            [ngClass]="animationClass"
-            (animationend)="animationClass = ''"
-          >
-            <div class="left-frills frills"></div>
-            <div class="button">
-              <i class="icon-phone"></i>
-              <div>
-                <span class="button__label">Llama Ahora </span>
-                <span class="button__number">311 438 69 70</span>
+                <span class="icon-timer">
+                  <svg>
+                    <circle
+                      class="icon-timer__circle-animation icon-timer__circle-animation--{{
+                        i + 1
+                      }}"
+                    ></circle>
+                  </svg>
+                </span>
               </div>
             </div>
-            <div class="right-frills frills"></div>
-          </a>
+          </div>
+        </div>
+
+        <div class="ps-main__image">
+          <img
+            class=""
+            src="https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fprinter-ps.png?alt=media&token=eedb0fb7-aeb2-47b8-83dc-2f1225c837bf"
+          />
+          <div class="ps-main__image__shadow"></div>
+        </div>
+
+        <div
+          class="ps-main__advice-button animate__animated animate__fadeInLeft"
+        >
+          <button type="button">
+            <a
+              href="tel:{{ phone }}"
+              (click)="
+                saveAnalyticsTrack('llamada-pagina-inicial');
+                saveDataAction('llamada-flotante')
+              "
+            >
+              <span class="button__label">¡Llama Ahora!</span>
+            </a>
+          </button>
+          <span class="ps-main__advice-phone">{{ phoneShort }}</span>
         </div>
       </div>
     </section>

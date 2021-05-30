@@ -10,43 +10,170 @@
   width: 100%;
   height: 100%;
 
+  .ps__card {
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    position: absolute;
+    top: 1rem;
+    width: 100%;
+    @media (min-width: $breakPointTb) {
+      border: none;
+    }
+    &__wrapper-description {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      p {
+        line-height: 1.5;
+        font-size: 1rem;
+        margin: 0;
+        font-weight: 300;
+      }
+      .icon-timer {
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        display: inline-block;
+        height: 31px;
+        vertical-align: middle;
+        width: 31px;
+        background: url("src/assets/images/plus.svg") center no-repeat;
+        margin-right: 0.75rem;
+        &__circle-animation {
+          display: block;
+          stroke: #fff;
+          stroke-width: 2;
+          stroke-dasharray: 95;
+          stroke-dashoffset: 95;
+          transition: all 9s linear;
+          // animation: load linear 9s infinite;
+          &.active {
+            stroke-dashoffset: 0;
+          }
+          r: 15;
+          cx: 17;
+          cy: 17;
+          @keyframes load {
+            100% {
+              stroke-dashoffset: 0;
+            }
+          }
+        }
+        svg {
+          fill: transparent;
+          height: 33px;
+          margin: -2px 0 0 -2px;
+          transform: rotate(-90deg);
+          width: 33px;
+        }
+      }
+    }
+    h2 {
+      font-size: 24px;
+      line-height: 1.25;
+      margin: 0;
+      text-align: left;
+      padding-bottom: 1rem;
+    }
+  }
+
   &__sections {
     max-width: 1152px;
     margin: auto;
   }
-  &__wrapper-image-title {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 48px);
+  &__main-wrapper {
+    height: calc(100vh - 7rem);
     min-height: 100%;
-    @media (min-width: 768px) {
-      flex-direction: row-reverse;
+    @media (min-width: $breakPointTb) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .ps-main__main-grid {
+      display: grid;
+
+      grid-template-rows: min-content min-content min-content;
+      grid-template-columns: 1fr;
+
+      @media (min-width: $breakPointTb) {
+        margin-bottom: 4rem;
+        grid-template-rows: min-content min-content;
+        grid-template-columns: min-content 356px;
+      }
     }
   }
 
   &__image {
     width: 100%;
-    height: 140px;
+    height: 168px;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeIn ease 1s;
-    @media (min-width: 768px) {
-      height: 320px;
-      width: 320px;
-      min-width: 320px;
+    position: absolute;
+    top: 124px;
+    animation: fadeIn ease 1s, float ease-in-out 6s infinite;
+    z-index: 10;
+    opacity: 0.4;
+    padding-left: 0;
+    @media (min-width: $breakPointTb) {
+      padding-left: 3rem;
+      height: 100%;
+      width: 100%;
+      min-width: 100%;
+      position: relative;
+      top: 0;
+      opacity: 1;
     }
+
     img {
       width: auto;
       height: 100%;
       object-fit: fill;
+      -webkit-filter: drop-shadow(1px 1px 12px $primaryCyan);
+      filter: drop-shadow(1px 1px 12px $primaryCyan);
+    }
+
+    &__shadow {
+      background: rgba(0, 0, 0, 0.1);
+      width: 150px;
+      height: 16px;
+      min-height: 16px;
+      border-radius: 50%;
+      animation: fadeIn ease 1s, shadow ease-in-out 6s infinite;
+      position: absolute;
+      bottom: -12px;
+      left: calc(100% - 230px);
+      box-shadow: 16px 16px 32px rgb(0 0 0 / 10%);
+    }
+
+    @keyframes shadow {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(0.9);
+      }
+    }
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
     }
   }
 
   h2 {
     font-size: 24px;
-    margin: 10px 0px 20px;
-    color: $darkCyanTwo;
+    margin: 1rem 0px 2rem;
+    color: #ffffff;
     text-align: center;
   }
 
@@ -68,8 +195,8 @@
       padding: 0;
       margin: 0;
       text-align: center;
-      color: darken($darkCyan, 30%);
-      font-size: 20px;
+      color: #ffffff;
+      font-size: 18px;
       line-height: 1.5;
       max-width: 480px;
     }
@@ -77,8 +204,13 @@
 
   &__data {
     color: #ffffff;
-    position: relative;
-    padding: 2rem 40px;
+    padding: 2rem 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $breakPointTb) {
+      position: relative;
+      padding: 2rem 2rem 0 2rem;
+    }
 
     &--info {
       color: $darkColor;
@@ -87,12 +219,11 @@
       align-items: flex-start;
       flex-direction: column;
       position: relative;
-      box-sizing: border-box;
       font-size: 12px;
       width: 100%;
       height: auto;
       padding: 16px 16px 16px 16px;
-      @media (min-width: 768px) {
+      @media (min-width: $breakPointTb) {
         width: 60%;
         max-width: 60%;
       }
@@ -126,14 +257,17 @@
       flex-direction: column;
 
       h1 {
-        color: $darkCyanTwo;
-        font-size: 32px;
+        color: #ffffff;
+        font-size: 24px;
         line-height: 1.1em;
         text-align: center;
-        @media (min-width: 768px) {
-          font-size: 54px;
+        > span {
+          color: $primaryCyan;
+        }
+        @media (min-width: $breakPointTb) {
+          font-size: 32px;
           text-align: left;
-          width: 800px;
+          width: 428px;
         }
       }
     }
@@ -142,7 +276,6 @@
   &__item {
     display: flex;
     align-items: center;
-    padding: 0.25rem 0 0rem 0;
     a,
     a:active,
     a:focus,
@@ -156,26 +289,25 @@
     }
     &--description {
       justify-content: flex-start;
-      padding: 0.5rem 0;
-      position: relative;
-      height: 104px;
+      position: absolute;
+      width: calc(100% - 4rem);
+      flex: 1 1 auto;
+      height: 192px;
+      margin-top: 2.5rem;
+      z-index: 20;
+      bottom: 174px;
+      @media (min-width: $breakPointTb) {
+        height: 133px;
+        margin-top: 0;
+        position: relative;
+        bottom: unset;
+      }
       &__text {
         position: absolute;
-        top: 0.5rem;
+        top: 0;
         left: 0;
-        display: flex;
-        align-items: center;
-        padding: 0.5rem 0;
-        height: 72px;
-        margin: 0;
-        text-align: left;
-        color: darken($darkCyan, 30%);
-        font-size: 22px;
-        font-weight: 700;
-        max-width: 480px;
-        line-height: 1.5em;
         opacity: 0;
-        @media (min-width: 768px) {
+        @media (min-width: $breakPointTb) {
           font-size: 28px;
         }
         &--animation {
@@ -191,17 +323,21 @@
     }
   }
   &__call-to-actions {
-    position: fixed;
+    align-items: center;
+    background: #000000;
     bottom: 0;
-    right: 0;
-    width: auto;
     display: inline-flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    margin: 0 1rem 1rem 0;
-    z-index: 10;
+    left: 0;
+    position: fixed;
+    right: 0;
     transition: 0.5s ease-in;
+    width: auto;
+    z-index: 10;
+    @media (min-width: $breakPointTb) {
+      display: none;
+    }
     &.ps-main__call-to-actions--fixed-limit {
       bottom: 140px;
     }
@@ -212,23 +348,70 @@
     justify-content: center;
     align-items: center;
     padding-top: 24px;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
   }
   &__maps {
     padding: 16px;
     width: 100%;
     max-width: 100%;
-    @media (min-width: 768px) {
+    @media (min-width: $breakPointTb) {
       width: 60%;
       max-width: 60%;
     }
   }
-  &__funcy-button {
+  &__advice-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 0;
+    padding: 1.5rem 0;
     position: relative;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    bottom: 3rem;
+    @media (min-width: $breakPointTb) {
+      flex-direction: row;
+      width: auto;
+      justify-content: flex-start;
+      padding: 2.5rem 0 0 2rem;
+      position: relative;
+      bottom: unset;
+    }
+    button {
+      background-color: $primaryCyan;
+      color: #000000;
+      font-size: 24px;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 180px;
+      height: 48px;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      a,
+      a:active,
+      a:focus,
+      a:visited {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+    .ps-main__advice-phone {
+      color: $primaryCyan;
+      font-size: 24px;
+      font-weight: 700;
+      padding-left: 1rem;
+      padding-top: 1rem;
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+      @media (min-width: $breakPointTb) {
+        width: auto;
+        padding-top: 0;
+      }
+    }
   }
 }
 
@@ -268,191 +451,5 @@
 
   100% {
     opacity: 0;
-  }
-}
-
-//funcy button
-$button-width: 144px;
-$button-height: 48px;
-$button-color: $darkCyanTwo;
-$button-font-size: 12px;
-
-$frill-vert-space: 45px; //vertical spacing between frills
-$frill-horizontal-offset: 14px; //initial offset
-$frill-distance: 80px; //distance moved by frills
-$frill-stagger: 15px; //distance between center and edge frills
-
-$frill-rotation: 34deg;
-$frill-height: 8px;
-$frill-width: 38px;
-
-$speed: 0.38s;
-$timing-function: ease-out;
-
-.button {
-  background: $button-color;
-  box-shadow: 0 8px 6px -6px black;
-  border-radius: 9px;
-  color: white;
-  cursor: pointer;
-  font-size: $button-font-size;
-  height: $button-height;
-  letter-spacing: 0.2px;
-  text-align: center;
-  text-transform: uppercase;
-  user-select: none;
-  width: $button-width;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  .icon-phone {
-    height: 26px;
-    width: 24px;
-    background: url("src/assets/images/phone-cyan_old.svg") no-repeat;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-right: 0.5rem;
-  }
-  > div {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-  }
-  &:hover {
-    background: lighten($button-color, 4%);
-  }
-  &:active {
-    box-shadow: inset 0px 2px 8px -1px darken($button-color, 6%);
-  }
-}
-
-.fancy-button {
-  margin: auto;
-  position: relative;
-}
-.frills,
-.frills:after,
-.frills:before {
-  position: absolute;
-  background: $button-color;
-  border-radius: ($frill-height/2);
-  height: $frill-height;
-}
-.frills:after,
-.frills:before {
-  content: "";
-  display: block;
-}
-.frills:before {
-  bottom: $frill-vert-space;
-}
-.frills:after {
-  top: $frill-vert-space;
-}
-.left-frills {
-  right: $button-width + $frill-horizontal-offset;
-  top: ($button-height/2)- ($frill-height/2);
-  .active & {
-    animation: move-left $speed $timing-function,
-      width-to-zero $speed $timing-function;
-  }
-
-  &:before,
-  &:after {
-    left: $frill-stagger;
-  }
-  &:before {
-    .active & {
-      animation: width-to-zero $speed $timing-function,
-        move-up $speed $timing-function;
-    }
-  }
-  &:after {
-    .active & {
-      animation: width-to-zero $speed $timing-function,
-        move-down $speed $timing-function;
-    }
-  }
-}
-.right-frills {
-  left: $button-width + $frill-horizontal-offset;
-  top: ($button-height/2)- ($frill-height/2);
-  .active & {
-    animation: move-right $speed $timing-function,
-      width-to-zero $speed $timing-function;
-  }
-  &:before,
-  &:after {
-    right: $frill-stagger;
-  }
-  &:before {
-    .active & {
-      animation: width-to-zero $speed $timing-function,
-        move-up $speed $timing-function;
-    }
-  }
-  &:after {
-    .active & {
-      animation: width-to-zero $speed $timing-function,
-        move-down $speed $timing-function;
-    }
-  }
-}
-
-.left-frills:before,
-.right-frills:after {
-  transform: rotate($frill-rotation);
-}
-
-.left-frills:after,
-.right-frills:before {
-  transform: rotate(-$frill-rotation);
-}
-
-@keyframes move-left {
-  0% {
-    transform: none;
-  }
-  65% {
-    transform: translateX(-1 * $frill-distance);
-  }
-  100% {
-    transform: translateX(-1 * $frill-distance);
-  }
-}
-@keyframes move-right {
-  0% {
-    transform: none;
-  }
-  65% {
-    transform: translateX($frill-distance);
-  }
-  100% {
-    transform: translateX($frill-distance);
-  }
-}
-@keyframes width-to-zero {
-  0% {
-    width: $frill-width;
-  }
-  100% {
-    width: $frill-height;
-  }
-}
-@keyframes move-up {
-  0% {
-  }
-  100% {
-    bottom: $frill-vert-space * 1.55;
-  }
-}
-@keyframes move-down {
-  0% {
-  }
-  100% {
-    top: $frill-vert-space * 1.55;
   }
 }
