@@ -9,8 +9,6 @@ import {
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 import { CallToActionsService } from 'src/app/services/call-to-actions.service';
-import { fromEvent } from 'rxjs';
-import { sampleTime, map } from 'rxjs/operators';
 import { IpService } from 'src/app/services/ip.service';
 
 @Component({
@@ -18,7 +16,7 @@ import { IpService } from 'src/app/services/ip.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit, OnDestroy {
+export class MainComponent implements OnInit {
   ipSaved = false;
   document: any;
   dataIp: any;
@@ -40,7 +38,6 @@ export class MainComponent implements OnInit, OnDestroy {
 
   toFadeIn = this.descriptions.length;
   slideCount = this.descriptions.length;
-  scrollSubscription: any;
 
   constructor(
     private callToActionsService: CallToActionsService,
@@ -57,37 +54,6 @@ export class MainComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.changeFadeIn();
       }, 0);
-    }
-  }
-
-  ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const tracker = this.document.querySelector('.ps-main');
-      const callToActions = this.document.querySelector(
-        '.ps-main__call-to-actions'
-      );
-      const scroll$ = fromEvent(tracker, 'scroll').pipe(
-        sampleTime(300),
-        map(() => tracker)
-      );
-      this.scrollSubscription = scroll$.subscribe((tracker) => {
-        if (
-          Math.round(tracker.scrollTop) ===
-          Math.round(tracker.scrollHeight - tracker.clientHeight)
-        ) {
-          callToActions.classList.add('ps-main__call-to-actions--fixed-limit');
-        } else {
-          callToActions.classList.remove(
-            'ps-main__call-to-actions--fixed-limit'
-          );
-        }
-      });
-    }
-  }
-
-  ngOnDestroy() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.scrollSubscription.unsubscribe();
     }
   }
 
