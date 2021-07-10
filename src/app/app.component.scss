@@ -1,34 +1,30 @@
 @import "../variables";
 
-.ps-container {
+.container {
+  background-color: $backgroundColor;
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 0;
-  &__wrapper {
+
+  .header {
+    background-color: #000000;
+  }
+  .banner {
+    background: rgb(144, 254, 254);
+    background: linear-gradient(
+      180deg,
+      rgba(144, 254, 254, 0.2) 0%,
+      rgba(28, 28, 28, 1) 100%
+    );
+  }
+  .content {
+    position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: $backgroundColor;
-    height: 100%;
-    .ps-header {
-      background-color: #000000;
-    }
-    .ps-banner {
-      background: rgb(144, 254, 254);
-      background: linear-gradient(
-        180deg,
-        rgba(144, 254, 254, 0.2) 0%,
-        rgba(28, 28, 28, 1) 100%
-      );
-    }
-    .ps-main {
-      position: relative;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 auto;
-      overflow: auto;
-    }
+    flex: 1 1 auto;
+    overflow: auto;
   }
 }
 

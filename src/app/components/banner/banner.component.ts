@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BannerComponent implements OnInit {
   @Input() dataIp: any;
-  tooltipText = 'Domicilio sin costo';
+  tooltipText = 'Domicilio sin costo.';
   constructor() {}
 
   ngOnInit() {}

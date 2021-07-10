@@ -1,77 +1,97 @@
 <div class="ps-main">
   <div class="ps-main__sections">
     <section class="ps-main__main-wrapper">
-      <div class="ps-main__main-grid">
-        <div
-          class="ps-main__data"
-          itemscope
-          itemtype="http://schema.org/LocalBusiness"
-        >
-          <div class="ps-main__title animate__animated animate__fadeInDown">
-            <h1 itemprop="description">
-              Mantenimiento de Impresoras <span>en su casa u oficina.</span>
-            </h1>
-          </div>
+      <!-- title and slider text -->
+      <div class="data" itemscope itemtype="http://schema.org/LocalBusiness">
+        <div class="data-title animate__animated animate__fadeInDown">
+          <h1 itemprop="description">
+            Mantenimiento de Impresoras <span>en su casa u oficina.</span>
+          </h1>
+        </div>
+        <div class="data-cards animate__animated animate__fadeInDown">
           <div
-            class="ps-main__item ps-main__item--description animate__animated animate__fadeInDown"
+            *ngFor="let text of descriptions; let i = index"
+            class="data-card data-card--{{ i }} animate__animated"
           >
-            <div
-              *ngFor="let text of descriptions; let i = index"
-              class="ps__card ps-main__item--description__text ps-main__item--description__text--{{
-                i + 1
-              }} animate__animated"
-            >
-              <h2>{{ text.title }}</h2>
-              <div class="ps__card__wrapper-description">
-                <p itemprop="description">
-                  {{ text.text }}
-                </p>
+            <h2>{{ text.title }}</h2>
+            <div class="data-card__description-wrapper">
+              <p itemprop="description">
+                {{ text.text }}
+              </p>
 
-                <span class="icon-timer">
-                  <svg>
-                    <circle
-                      class="icon-timer__circle-animation icon-timer__circle-animation--{{
-                        i + 1
-                      }}"
-                    ></circle>
-                  </svg>
-                </span>
-              </div>
+              <span class="icon-timer">
+                <svg>
+                  <circle
+                    class="icon-timer__circle-animation icon-timer__circle-animation--{{
+                      i
+                    }}"
+                  ></circle>
+                </svg>
+              </span>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="ps-main__image">
-          <img
-            class=""
-            src="https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fprinter-ps.png?alt=media&token=eedb0fb7-aeb2-47b8-83dc-2f1225c837bf"
-          />
+      <!-- image -->
+      <div class="ps-main__image">
+        <div
+          *ngFor="let image of images; let i = index"
+          class="ps-image-card ps-image-card--{{ i }} animate__animated"
+        >
+          <img [src]="image" />
           <div class="ps-main__image__shadow"></div>
         </div>
+      </div>
 
-        <div
-          class="ps-main__advice-button animate__animated animate__fadeInLeft"
-        >
-          <button type="button">
-            <a
-              href="tel:{{ phone }}"
-              (click)="
-                saveAnalyticsTrack('llamada-pagina-inicial');
-                saveDataAction('llamada-flotante')
-              "
-            >
-              <span class="button__label">¡Llama Ahora!</span>
-            </a>
-          </button>
+      <!-- button main -->
+      <div class="ps-main__advice-button animate__animated animate__fadeInLeft">
+        <button type="button">
           <a
-            class="ps-main__advice-phone"
             href="tel:{{ phone }}"
             (click)="
               saveAnalyticsTrack('llamada-pagina-inicial');
               saveDataAction('llamada-flotante')
             "
-            >{{ phoneShort }}</a
           >
+            <span class="button__label">¡Llama Ahora!</span>
+          </a>
+        </button>
+        <a
+          class="ps-main__advice-phone"
+          href="tel:{{ phone }}"
+          (click)="
+            saveAnalyticsTrack('llamada-pagina-inicial');
+            saveDataAction('llamada-flotante')
+          "
+          >{{ phoneShort }}</a
+        >
+      </div>
+      <!-- brands -->
+      <div class="brands-wrapper">
+        <div class="brand">
+          <i class="icon icon-epson"></i>
+        </div>
+        <div class="brand">
+          <i class="icon icon-hp"></i>
+        </div>
+        <div class="brand">
+          <i class="icon icon-samsumg"></i>
+        </div>
+        <div class="brand">
+          <i class="icon icon-canon"></i>
+        </div>
+        <div class="brand">
+          <i class="icon icon-toshiba"></i>
+        </div>
+        <div class="brand">
+          <i class="icon icon-ricoh"></i>
+        </div>
+        <div class="brand">
+          <i class="icon icon-kyocera"></i>
+        </div>
+        <div class="brand">
+          <i class="icon icon-lexmark"></i>
         </div>
       </div>
     </section>

@@ -23,6 +23,15 @@ export class MainComponent implements OnInit {
   phone = '+57-311-4386970';
   phoneShort = '311 438 69 70';
 
+  readonly BASE_CLASS_TEXT = '.data-card';
+  readonly BASE_CLASS_IMAGE = '.ps-image-card';
+  readonly TRANSITION_TIME = 9000;
+
+  images = [
+    'https://firebasestorage.googleapis.com/v0/b/printing-solutions-co.appspot.com/o/gallery%2Fprinter-ps.png?alt=media&token=eedb0fb7-aeb2-47b8-83dc-2f1225c837bf',
+    // '/assets/images/ink.png',
+  ];
+
   descriptions = [
     {
       title: 'Mantenimientos',
@@ -33,11 +42,11 @@ export class MainComponent implements OnInit {
       title: 'Venta de Suministros',
       text: 'Venta de Cartuchos, Tóner y Tintas.',
     },
-    { title: 'Recargas', text: 'Recarga de Tóner y Cartuchos.' },
+    {
+      title: 'Recargas',
+      text: 'Recarga de Tóner y Cartuchos.',
+    },
   ];
-
-  toFadeIn = this.descriptions.length;
-  slideCount = this.descriptions.length;
 
   constructor(
     private callToActionsService: CallToActionsService,
@@ -51,64 +60,102 @@ export class MainComponent implements OnInit {
   async ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.dataIp = await this.ipService.getIp();
-      setTimeout(() => {
-        this.changeFadeIn();
-      }, 0);
+      this.initSlider(this.descriptions, this.BASE_CLASS_TEXT);
+      // this.initSlider(this.images, this.BASE_CLASS_IMAGE);
     }
   }
 
-  changeFadeIn() {
-    const toFadeOut = this.toFadeIn;
-    this.toFadeIn += 1;
-
-    if (this.toFadeIn > this.slideCount) {
-      this.toFadeIn = 1;
+  async initSlider(dataToAnimate: any[], className: string) {
+    let indexUpdated = this.descriptions.length;
+    var results = await Promise.all(
+      [...dataToAnimate, undefined].map(
+        async (item, index): Promise<any> => {
+          const timeTransition = index * this.TRANSITION_TIME;
+          indexUpdated = indexUpdated - 1;
+          const isLast = item === undefined ? true : false;
+          const data = await this.getAnimationSlider(
+            className,
+            timeTransition,
+            index,
+            isLast
+          );
+          return data;
+        }
+      )
+    );
+    if (results.length > 0) {
+      this.initSlider(dataToAnimate, className);
     }
-    let cards = this.document.querySelectorAll(
-      '.ps-main__item--description__text'
-    );
+  }
 
-    [...cards].map((card, index) => {
-      card.classList.remove('animate__fadeInDown', 'animate__fadeOutDown');
-      card.classList.add('hide');
-      this.removeTimerCard(index + 1);
+  getAnimationSlider(
+    className: string,
+    time: number,
+    index: number,
+    isLast: boolean
+  ) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (!isLast) {
+          this.changeFadeIn(className, index);
+        }
+        resolve(index);
+      }, time);
     });
+  }
 
-    //card fadeOut
-    const elToFadeOut = document.querySelector(
-      `.ps-main__item--description__text--${toFadeOut}`
-    );
+  changeFadeIn(className: string, toFadeIn: number) {
+    let toFadeOut = 0;
+    let cards = this.document.querySelectorAll(className);
+    try {
+      [...cards].map((card, index) => {
+        card.classList.remove('animate__fadeInDown', 'animate__fadeOutDown');
+        card.classList.add('hide');
+        this.removeTimerCard(index);
+      });
 
-    elToFadeOut.classList.remove('hide');
-    elToFadeOut.classList.add('animate__fadeOutDown');
+      if (toFadeIn === 0 || toFadeIn === cards.length) {
+        toFadeIn = 0;
+        toFadeOut = cards.length - 1;
+      } else {
+        toFadeOut = toFadeIn - 1;
+        toFadeOut = toFadeOut < 0 ? cards.length - 1 : toFadeOut;
+      }
 
-    //card fadeIn
-    const elToFadeIn = document.querySelector(
-      `.ps-main__item--description__text--${this.toFadeIn}`
-    );
+      //card fadeOut
+      const elToFadeOut = document.querySelector(`${className}--${toFadeOut}`);
 
-    this.initTimerCard(this.toFadeIn);
+      elToFadeOut.classList.remove('hide');
+      elToFadeOut.classList.add('animate__fadeOutDown');
 
-    elToFadeIn.classList.remove('hide');
-    elToFadeIn.classList.add('animate__fadeInDown');
+      //card fadeIn
+      const elToFadeIn = document.querySelector(`${className}--${toFadeIn}`);
 
-    setTimeout(() => {
-      this.changeFadeIn();
-    }, 9000);
+      this.initTimerCard(toFadeIn);
+
+      elToFadeIn.classList.remove('hide');
+      elToFadeIn.classList.add('animate__fadeInDown');
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   removeTimerCard(index) {
     const timer = document.querySelector(
       `.icon-timer__circle-animation--${index}`
     );
-    timer.classList.remove('active');
+    if (timer) {
+      timer.classList.remove('active');
+    }
   }
 
   initTimerCard(index) {
     const timer = document.querySelector(
       `.icon-timer__circle-animation--${index}`
     );
-    timer.classList.add('active');
+    if (timer) {
+      timer.classList.add('active');
+    }
   }
 
   saveAnalyticsTrack(eventName: string): void {
