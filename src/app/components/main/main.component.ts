@@ -20,8 +20,8 @@ export class MainComponent implements OnInit {
   ipSaved = false;
   document: any;
   dataIp: any;
-  phone = '+57-311-4386970';
-  phoneShort = '311 438 69 70';
+  phone = '+57-311-2284441';
+  phoneShort = '311 228 44 41';
 
   readonly BASE_CLASS_TEXT = '.data-card';
   readonly BASE_CLASS_IMAGE = '.ps-image-card';

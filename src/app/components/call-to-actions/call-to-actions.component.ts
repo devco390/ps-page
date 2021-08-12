@@ -3,17 +3,17 @@ import {
   OnInit,
   Input,
   SimpleChanges,
-  OnChanges
+  OnChanges,
 } from '@angular/core';
 
 import { CallToActionsService } from '../../services/call-to-actions.service';
 @Component({
   selector: 'ps-call-to-actions',
   templateUrl: './call-to-actions.component.html',
-  styleUrls: ['./call-to-actions.component.scss']
+  styleUrls: ['./call-to-actions.component.scss'],
 })
 export class CallToActionsComponent implements OnInit, OnChanges {
-  phone = '+57-311-4386970';
+  phone = '+57-311-2284441';
   @Input() dataIp: any;
 
   constructor(private callToActionsService: CallToActionsService) {}
