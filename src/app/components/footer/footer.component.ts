@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  mobile = '+57-311-2284441';
+  mobile = '+57-311-4386970';
   phone = '+57-0317037907';
   lat = 4.6651519;
   lng = -74.058919;
