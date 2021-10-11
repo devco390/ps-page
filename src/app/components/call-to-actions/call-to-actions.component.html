@@ -1,32 +1,29 @@
-<div class="ps-call-to-actions">
-  <a
-    class="call-to-action call-to-action--call animate__animated animate__fadeInUp animate__delay-1s"
-    href="tel:{{ phone }}"
-    (click)="
-      saveAnalyticsTrack('llamada-flotante'); saveDataAction('llamada-flotante')
-    "
-  >
-    <div class="call-to-action__text">
-      <div class="call-to-action__circle phone">
-        <i class="icon icon-phone"></i>
-      </div>
-      <span class="call-to-action__number">311 438 69 70</span>
+<a
+  class="call-to-action call-to-action--call animate__animated animate__fadeInUp animate__delay-1s"
+  href="tel:{{ phone }}"
+  (click)="
+    saveAnalyticsTrack('llamada-flotante'); saveDataAction('llamada-flotante')
+  "
+>
+  <div class="call-to-action__text">
+    <div class="call-to-action__circle phone">
+      <i class="icon icon-phone"></i>
     </div>
-  </a>
+    <span class="call-to-action__number">311 438 69 70</span>
+  </div>
+</a>
 
-  <a
-    class="call-to-action call-to-action--whatsapp animate__animated animate__fadeInUp animate__delay-1s"
-    href="https://api.whatsapp.com/send?phone={{ phoneWhatsapp }}"
-    (click)="
-      saveAnalyticsTrack('whatsapp-flotante');
-      saveDataAction('whatsapp-flotante')
-    "
-  >
-    <div class="call-to-action__text">
-      <div class="call-to-action__circle whatsapp">
-        <i class="icon icon-whatsapp"></i>
-      </div>
-      <span class="call-to-action__number"> Atención en Línea</span>
+<a
+  class="call-to-action call-to-action--whatsapp animate__animated animate__fadeInUp animate__delay-1s"
+  href="https://api.whatsapp.com/send?phone={{ phoneWhatsapp }}"
+  (click)="
+    saveAnalyticsTrack('whatsapp-flotante'); saveDataAction('whatsapp-flotante')
+  "
+>
+  <div class="call-to-action__text">
+    <div class="call-to-action__circle whatsapp">
+      <i class="icon icon-whatsapp"></i>
     </div>
-  </a>
-</div>
+    <span class="call-to-action__number"> Atención en Línea</span>
+  </div>
+</a>

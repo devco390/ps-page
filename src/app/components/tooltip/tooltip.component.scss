@@ -1,5 +1,11 @@
 @import "../../../variables";
 
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .ps-tooltip {
   align-items: center;
   background: $primaryCyan;
@@ -7,12 +13,12 @@
   border: 1px solid $primaryCyan;
   color: #000000;
   display: flex;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   height: auto;
   justify-content: center;
   opacity: 1;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   pointer-events: none;
   position: relative;
   transition: all 0.25s ease-out;
@@ -33,6 +39,6 @@
     margin-right: 0.25rem;
     padding-top: 0.25rem;
     transform: scaleX(-1);
-    width: 24px;
+    width: 18px;
   }
 }

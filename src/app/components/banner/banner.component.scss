@@ -3,29 +3,27 @@
 :host {
   height: 48px;
   min-height: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-family: "Proxima Nova";
+  background: rgb(144, 254, 254);
+  background: linear-gradient(
+    180deg,
+    rgba(144, 254, 254, 0.2) 0%,
+    rgba(28, 28, 28, 1) 100%
+  );
+
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  position: relative;
+  justify-content: center;
+
+  @media (min-width: $breakPointTb) {
+    padding: 0.5rem 40px;
+  }
 }
 
 .ps-banner {
-  &__wrapper {
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 1rem 1rem 1.5rem 1rem;
-    @media (min-width: $breakPointTb) {
-      justify-content: flex-end;
-      padding: 0.5rem 1rem;
-    }
-  }
-  &__call-to-actions {
-    display: none;
-    @media (min-width: $breakPointTb) {
-      display: block;
-    }
-  }
   &__tooltip {
     @media (min-width: $breakPointTb) {
       padding-right: 1rem;

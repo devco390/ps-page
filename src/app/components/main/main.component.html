@@ -5,7 +5,7 @@
       <div class="data" itemscope itemtype="http://schema.org/LocalBusiness">
         <div class="data-title animate__animated animate__fadeInDown">
           <h1 itemprop="description">
-            Mantenimiento de Impresoras <span>en su casa u oficina.</span>
+            Mantenimiento de Impresoras <span>en su casa u oficina</span>
           </h1>
         </div>
         <div class="data-cards animate__animated animate__fadeInDown">
@@ -66,7 +66,11 @@
           "
           >{{ phoneShort }}</a
         >
+        <div class="ps-main__delivery">
+          <ps-tooltip [text]="'Domicilio sin costo'"> </ps-tooltip>
+        </div>
       </div>
+
       <!-- brands -->
       <div class="brands-wrapper">
         <div class="brand">
@@ -116,10 +120,6 @@
         <ps-maps></ps-maps>
       </div>
     </div>
-
-    <section class="ps-main__call-to-actions">
-      <ps-call-to-actions [dataIp]="dataIp"> </ps-call-to-actions>
-    </section>
   </div>
   <ps-footer></ps-footer>
 </div>

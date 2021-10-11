@@ -17,7 +17,6 @@ import { IpService } from 'src/app/services/ip.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  ipSaved = false;
   document: any;
   dataIp: any;
   phone = '+57-311-4386970';
