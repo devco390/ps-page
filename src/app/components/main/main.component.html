@@ -66,9 +66,16 @@
           "
           >{{ phoneShort }}</a
         >
-        <div class="ps-main__delivery">
+        <a
+          class="ps-main__delivery"
+          href="https://api.whatsapp.com/send?phone={{ phoneWhatsapp }}"
+          (click)="
+            saveAnalyticsTrack('domicilio-gratis');
+            saveDataAction('domicilio-gratis')
+          "
+        >
           <ps-tooltip [text]="'Domicilio sin costo'"> </ps-tooltip>
-        </div>
+        </a>
       </div>
 
       <!-- brands -->
