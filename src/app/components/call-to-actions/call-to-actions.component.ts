@@ -13,7 +13,7 @@ import { CallToActionsService } from '../../services/call-to-actions.service';
   styleUrls: ['./call-to-actions.component.scss'],
 })
 export class CallToActionsComponent implements OnInit, OnChanges {
-  phone = '+57-311-4386970';
+  phone = '3114386970';
   phoneWhatsapp = '+57-311-4386970';
   @Input() dataIp: any;
 

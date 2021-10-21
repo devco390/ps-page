@@ -19,7 +19,7 @@ import { IpService } from 'src/app/services/ip.service';
 export class MainComponent implements OnInit {
   document: any;
   dataIp: any;
-  phone = '+57-311-4386970';
+  phone = '3114386970';
   phoneShort = '311 438 69 70';
   phoneWhatsapp = '+57-311-4386970';
 
