@@ -581,7 +581,7 @@
 .loader {
   background: white;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -591,7 +591,7 @@
   top: 0;
   left: 0;
 
-  animation: loader 100s linear forwards;
+  animation: loader 6s ease-in-out forwards;
 }
 
 @keyframes loader {
@@ -599,7 +599,7 @@
     opacity: 1;
     visibility: visible;
   }
-  95% {
+  80% {
     opacity: 1;
   }
   100% {
@@ -642,47 +642,184 @@
 
 .loader-image {
   position: relative;
-  width: 462px;
-  height: 406px;
+  width: 150px;
+  height: 144px;
 }
 
-#service-error {
-  position: absolute;
-  transform: translate3d(-200px, 0, 0);
-  opacity: 0;
-  animation: imageInError 1s cubic-bezier(0, 0.88, 0.4, 0.93) forwards;
+.loader-text {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  position: relative;
+  width: 100%;
+  height: 138px;
+  max-width: 300px;
+
+  & h1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 0;
+    font-size: 32px;
+    font-weight: 700;
+    padding: 2rem 1rem 2rem 1rem;
+    color: #005858;
+    &.first {
+      opacity: 0;
+      animation: imageInError 3s ease-in-out forwards;
+    }
+    &.second {
+      opacity: 0;
+      animation: imageInOk 3s ease-in-out 2.5s forwards;
+    }
+  }
 }
 
-#service-ok {
+#printer {
   position: absolute;
-  transform: translate3d(-200px, 0, 0);
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  animation: imageIn 3s ease-in-out forwards;
+  #button {
+    fill: #d9534f;
+    animation: chengeColorButtonPrinter 3s ease-in-out 2.5s forwards;
+  }
+}
+
+#wrapper {
+  position: absolute;
+  left: -48px;
+  top: -21px;
+  width: 240px;
+  height: 240px;
+  #shape {
+    fill: none;
+    stroke: red;
+    stroke-width: 1;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    transition: all 4s ease-in-out;
+  }
+}
+
+#client {
+  position: absolute;
+  left: 28%;
+  bottom: 0;
+  width: 74%;
+  animation: imageInError 3s ease-in-out forwards;
+}
+
+#technical {
   opacity: 0;
-  animation: imageInOk 1s cubic-bezier(0, 0.88, 0.4, 0.93) 1s forwards;
+  position: absolute;
+  left: 40%;
+  bottom: 0;
+  width: 65%;
+  animation: imageInOk 3s ease-in-out 2.5s forwards;
+}
+
+#signs {
+  position: absolute;
+  left: -5%;
+  bottom: 64%;
+  width: 21%;
+  animation: imageInError 3s ease-in-out forwards;
+}
+
+.progress {
+  width: 100%;
+  max-width: 160px;
+  height: 3px;
+  background: #e1e4e8;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  & .progress-bar {
+    display: block;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgb(0 255 255 / 80%),
+      rgb(255 0 255 / 80%) 17%,
+      rgb(255 255 0 / 80%) 34%,
+      rgb(0 255 255 / 80%) 51%,
+      rgb(255 0 255 / 80%) 68%,
+      rgb(255 255 0 / 80%) 85%,
+      rgb(255 255 0 / 80%)
+    );
+    background-size: 300% 100%;
+    animation: progress-animation 6s linear infinite,
+      progress-bar-load 6s normal forwards;
+  }
+}
+
+@keyframes progress-animation {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0;
+  }
+}
+
+@keyframes progress-bar-load {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes imageIn {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes imageInError {
   0% {
-    transform: translate3d(-200px, 0, 0);
     opacity: 0;
   }
-  90% {
+  25% {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
   }
   100% {
     opacity: 0;
-    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes imageInOk {
   0% {
-    transform: translate3d(-200px, 0, 0);
     opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
   100% {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes chengeColorButtonPrinter {
+  0% {
+    fill: #d9534f;
+  }
+  50% {
+    fill: #5cb85c;
+  }
+  100% {
+    fill: #5cb85c;
   }
 }
 
