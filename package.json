@@ -5,6 +5,7 @@
     "ng": "ng",
     "dev": "ng serve",
     "dev:ip": "ng serve --host 192.168.0.67",
+    "dev:ip2": "ng serve --host 192.168.5.122",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

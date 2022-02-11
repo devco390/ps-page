@@ -31,6 +31,7 @@ import { ActionsTrackingComponent } from './components/actions-tracking/actions-
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { AnimationLoadingComponent } from './components/animation-loading/animation-loading.component';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { WindowModule } from './components/window/window.module';
 
@@ -40,6 +41,7 @@ import { WindowModule } from './components/window/window.module';
     MainComponent,
     HeaderComponent,
     BannerComponent,
+    AnimationLoadingComponent,
     TooltipComponent,
     IpTrackingComponent,
     ActionsTrackingComponent,

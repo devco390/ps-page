@@ -29,11 +29,57 @@ a:visited {
 }
 
 .cyan {
-  background: cyan;
+  background: #00ffff;
 }
 .yellow {
-  background: yellow;
+  background: #ffff00;
 }
 .magenta {
-  background: magenta;
+  background: #ff00ff;
+}
+
+.ps-logo {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 48px;
+  font-size: 1rem;
+  &.ps-logo__white {
+    height: 48px;
+    h1 {
+      color: #000000;
+      font-size: 1rem;
+    }
+    .dot {
+      box-shadow: 0 0 0.5px 0.2px rgb(0 0 0 / 70%);
+    }
+  }
+  @media (min-width: $breakPointTb) {
+    font-size: 1.25rem;
+  }
+  cursor: pointer;
+  h1 {
+    color: #ffffff;
+    font-family: "Times New Roman";
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+  }
+  .dots {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .dot {
+    width: 0.25em;
+    height: 0.25em;
+    border-radius: 50%;
+    opacity: 1;
+    animation: drops 2s linear infinite;
+    margin-left: 0.16em;
+    cursor: pointer;
+    box-shadow: 0 0 0.5px 0.5px rgb(41 41 41 / 50%);
+  }
 }

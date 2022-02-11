@@ -5,45 +5,10 @@ header {
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  background-color: #000000;
+  justify-content: center;
+  background-color: #292929;
   padding: 0 0.5rem;
   @media (min-width: $breakPointTb) {
     padding: 0 40px;
-  }
-  .ps-logo {
-    position: relative;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    font-size: 1rem;
-    @media (min-width: $breakPointTb) {
-      font-size: 1.25rem;
-    }
-    cursor: pointer;
-    h1 {
-      color: #ffffff;
-      font-family: "Times New Roman";
-      font-size: 1em;
-      margin: 0;
-      padding: 0;
-      font-weight: normal;
-    }
-    .dots {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .dot {
-      width: 0.25em;
-      height: 0.25em;
-      border-radius: 50%;
-      opacity: 1;
-      animation: drops 2s linear infinite;
-      margin-left: 0.16em;
-      cursor: pointer;
-      box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.15);
-    }
   }
 }
