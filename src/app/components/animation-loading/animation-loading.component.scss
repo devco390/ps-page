@@ -1,7 +1,9 @@
 @import "../../../variables";
+
 .your-class {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Crect fill='%23292929' width='1600' height='900'/%3E%3Cpolygon fill='%23cc0000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23aa0000' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23d6002b' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23b10022' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23d9004b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23b2003d' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23d3006c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23ac0057' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23c4008c' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%239e0071' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-color: #292929;
 }
+
 .your-class {
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,7 +12,7 @@
 
 .loader {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -20,7 +22,7 @@
   top: 0;
   left: 0;
 
-  animation: loader 6000s ease-in-out forwards;
+  animation: loader 6s ease-in-out forwards;
   .ps-logo {
     opacity: 0;
     animation: final 1s forwards;
@@ -43,14 +45,21 @@
   }
 }
 
+.loader-wrapper {
+  position: relative;
+  width: 246px;
+  height: 304px;
+}
+
 .overlay {
   position: absolute;
-  width: calc(100% + 6rem);
-  height: calc(100% + 6rem);
+  width: 246px;
+  height: 240px;
   background-color: #ffffff;
   border-radius: 50%;
-  top: -3rem;
-  left: -3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .loader-image {
@@ -64,8 +73,8 @@
 
 .loader-text {
   position: absolute;
-  bottom: 2rem;
-  left: 4rem;
+  bottom: 1.75rem;
+  left: 2.75rem;
   display: flex;
   justify-content: center;
   align-self: center;
@@ -143,15 +152,13 @@
 }
 
 .progress {
-  display: none;
-  width: 100%;
-  max-width: 160px;
-  height: 3px;
-  background: #e1e4e8;
-  border-radius: 3px;
+  background: #292929;
+  bottom: 0;
+  height: 4px;
+  max-width: 100%;
   overflow: hidden;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  position: absolute;
+  width: 100%;
 
   & .progress-bar {
     display: block;
