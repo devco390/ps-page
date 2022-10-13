@@ -10,6 +10,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 import { CallToActionsService } from 'src/app/services/call-to-actions.service';
 import { IpService } from 'src/app/services/ip.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ps-main',
@@ -48,11 +49,15 @@ export class MainComponent implements OnInit {
     },
   ];
 
+  public href: string = '';
+  public isBogota: boolean = true;
+
   constructor(
     private callToActionsService: CallToActionsService,
     @Inject(DOCUMENT) _document: any,
     @Inject(PLATFORM_ID) private platformId: any,
-    private ipService: IpService
+    private ipService: IpService,
+    private router: Router
   ) {
     this.document = _document;
   }
@@ -61,6 +66,9 @@ export class MainComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.dataIp = await this.ipService.getIp();
       this.initSlider(this.descriptions, this.BASE_CLASS_TEXT);
+      this.href = this.router.url;
+      this.isBogota = this.href.indexOf('bogota') !== -1 ? true : false;
+      console.log(this.router.url);
       // this.initSlider(this.images, this.BASE_CLASS_IMAGE);
     }
   }

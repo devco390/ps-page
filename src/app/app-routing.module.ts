@@ -24,6 +24,11 @@ const routes: Routes = [
     component: MainComponent,
     pathMatch: 'full',
   },
+  {
+    path: 'mantenimiento-impresoras-medellin',
+    component: MainComponent,
+    pathMatch: 'full',
+  },
   { path: 'ips', component: IpTrackingComponent, pathMatch: 'full' },
   { path: 'actions', component: ActionsTrackingComponent, pathMatch: 'full' },
   { path: '404', component: NotFoundComponent },

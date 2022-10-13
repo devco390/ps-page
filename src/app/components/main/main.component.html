@@ -5,7 +5,8 @@
       <div class="data" itemscope itemtype="http://schema.org/LocalBusiness">
         <div class="data-title animate__animated animate__fadeInDown">
           <h1 itemprop="description">
-            Mantenimiento de Impresoras <span>en su casa u oficina</span>
+            Mantenimiento de Impresoras
+            <span>en su casa u oficina {{ isBogota }}</span>
           </h1>
         </div>
         <div class="data-cards animate__animated animate__fadeInDown">
@@ -121,12 +122,12 @@
       <h2>GALERÍA</h2>
       <ps-gallery></ps-gallery>
     </section>
-    <div class="ps-main__maps-and-data">
+    <div class="ps-main__maps-and-data" *ngIf="isBogota">
       <h2>DONDE ENCONTRARNOS</h2>
       <div class="ps-main__maps">
         <ps-maps></ps-maps>
       </div>
     </div>
   </div>
-  <ps-footer></ps-footer>
+  <ps-footer [showAddress]="isBogota"></ps-footer>
 </div>
