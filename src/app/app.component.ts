@@ -41,11 +41,21 @@ export class AppComponent implements OnInit {
 
     console.log(
       `======================================
-Porque se que en las nostalgias llegas, y no dices NADA...
-https://youtu.be/yLWZ8XrdBVg
+Style is the answer to everything...
+https://www.youtube.com/watch?v=nGnGj3zL-bU
 
 
-“Nunca intentes ganar por la fuerza lo que se puede ganar mediante el engaño”. N.M.
+"Yo no digo nunca lo que creo, 
+ni creo nunca lo que digo, 
+y si se me escapa alguna verdad de vez en cuando, 
+la escondo entre tantas mentiras, que es difícil reconocerla."
+
+"For a long time I have not said what I believed, 
+nor do I ever believe what I say, 
+and if indeed sometimes I do happen to tell the truth, 
+I hide it among so many lies that it is hard to find."
+
+Nicolás Maquiavelo
 ======================================`
     );
   }

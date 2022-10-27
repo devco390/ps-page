@@ -68,8 +68,6 @@ export class MainComponent implements OnInit {
       this.initSlider(this.descriptions, this.BASE_CLASS_TEXT);
       this.href = this.router.url;
       this.isBogota = this.href.indexOf('bogota') !== -1 ? true : false;
-      console.log(this.router.url);
-      // this.initSlider(this.images, this.BASE_CLASS_IMAGE);
     }
   }
 

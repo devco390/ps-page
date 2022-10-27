@@ -14,7 +14,7 @@ import { CallToActionsService } from '../../services/call-to-actions.service';
 })
 export class CallToActionsComponent implements OnInit, OnChanges {
   phone = '3114386970';
-  phoneWhatsapp = '+57-311-4386970';
+  phoneWhatsapp = '573114386970';
   @Input() dataIp: any;
 
   constructor(private callToActionsService: CallToActionsService) {}
