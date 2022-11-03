@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   dataIp: any;
   phone = '3114386970';
   phoneShort = '311 438 69 70';
-  phoneWhatsapp = '+57-311-4386970';
+  phoneWhatsapp = '573114386970';
 
   readonly BASE_CLASS_TEXT = '.data-card';
   readonly BASE_CLASS_IMAGE = '.ps-image-card';
