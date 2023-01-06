@@ -4,9 +4,12 @@
       <!-- title and slider text -->
       <div class="data" itemscope itemtype="http://schema.org/LocalBusiness">
         <div class="data-title animate__animated animate__fadeInDown">
-          <h1 itemprop="description">
+          <h1 itemprop="description" class="data-title--primary">
             Mantenimiento de Impresoras
-            <span>en su casa u oficina</span>
+            <span *ngIf="!isBogota" class="data-title--primary"
+              >en Medellin</span
+            >,
+            <span class="data-title--second"> en su casa u oficina.</span>
           </h1>
         </div>
         <div class="data-cards animate__animated animate__fadeInDown">

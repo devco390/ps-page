@@ -67,7 +67,8 @@ export class MainComponent implements OnInit {
       this.dataIp = await this.ipService.getIp();
       this.initSlider(this.descriptions, this.BASE_CLASS_TEXT);
       this.href = this.router.url;
-      this.isBogota = this.href.indexOf('bogota') !== -1 ? true : false;
+      this.isBogota =
+        this.href.indexOf('bogota') !== -1 || this.href === '/' ? true : false;
     }
   }
 
