@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Inject,
-  OnDestroy,
-  PLATFORM_ID,
-  Input,
-} from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 
 import { CallToActionsService } from 'src/app/services/call-to-actions.service';
@@ -69,6 +62,12 @@ export class MainComponent implements OnInit {
       this.href = this.router.url;
       this.isBogota =
         this.href.indexOf('bogota') !== -1 || this.href === '/' ? true : false;
+
+      if (!this.isBogota) {
+        this.phone = '3104076873';
+        this.phoneShort = '310 407 68 73';
+        this.phoneWhatsapp = '573104076873';
+      }
     }
   }
 
