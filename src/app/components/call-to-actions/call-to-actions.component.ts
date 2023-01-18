@@ -18,6 +18,7 @@ import { CallToActionsService } from '../../services/call-to-actions.service';
 })
 export class CallToActionsComponent implements OnInit, OnChanges {
   phone = '3114386970';
+  phoneShort = '311 438 69 70';
   phoneWhatsapp = '573114386970';
   @Input() dataIp: any;
   public href: string = '';
@@ -39,10 +40,14 @@ export class CallToActionsComponent implements OnInit, OnChanges {
     if (isPlatformBrowser(this.platformId)) {
       this.href = this.router.url;
       this.isBogota =
-        this.href.indexOf('bogota') !== -1 || this.href === '/' ? true : false;
+        window.location.href.indexOf('bogota') !== -1 ||
+        window.location.href === '/'
+          ? true
+          : false;
 
       if (!this.isBogota) {
         this.phone = '3104076873';
+        this.phoneShort = '310 407 68 73';
         this.phoneWhatsapp = '573104076873';
       }
     }
