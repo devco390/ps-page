@@ -64,9 +64,9 @@ export class MainComponent implements OnInit {
         this.href.indexOf('bogota') !== -1 || this.href === '/' ? true : false;
 
       if (!this.isBogota) {
-        this.phone = '3104076873';
-        this.phoneShort = '310 407 68 73';
-        this.phoneWhatsapp = '573104076873';
+        this.phone = '3128741421';
+        this.phoneShort = '312 874 14 21';
+        this.phoneWhatsapp = '573128741421';
       }
     }
   }
