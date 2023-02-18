@@ -46,9 +46,9 @@ export class CallToActionsComponent implements OnInit, OnChanges {
           : false;
 
       if (!this.isBogota) {
-        this.phone = '3128741421';
-        this.phoneShort = '312 874 14 21';
-        this.phoneWhatsapp = '573128741421';
+        this.phone = '3114386970';
+        this.phoneShort = '311 438 69 70';
+        this.phoneWhatsapp = '573114386970';
       }
     }
   }
