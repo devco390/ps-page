@@ -1,9 +1,9 @@
 export const data = {
-    phone: '3112284441',
-    phoneShort: '311 228 44 41',
-    phoneWhatsapp: '573112284441',
-    phoneMedellin: '3112284441',
-    phoneShortMedellin: '311 228 44 41',
-    phoneWhatsappMedellin: '573112284441',
+    phone: '3114386970',
+    phoneShort: '311 438 69 70',
+    phoneWhatsapp: '573114386970',
+    phoneMedellin: '311 4386970',
+    phoneShortMedellin: '311 438 69 70',
+    phoneWhatsappMedellin: '573114386970',
     landlinePhone: '+57-0317037907'
 }
