@@ -25,7 +25,7 @@ export class MapsComponent implements OnInit {
   zoom = 15;
 
   urlToRedirectGoogleMaps =
-    'https://www.google.com/maps/place/Cra.+14+%23%2379-28,+Bogot%C3%A1/@4.665151,-74.058919,17z/data=!3m1!4b1!4m5!3m4!1s0x8e3f9a5f748cde5f:0x76fcf58e20ef66b1!8m2!3d4.6651457!4d-74.0567303';
+    'https://maps.app.goo.gl/7AXKsv2ULACLTByU9';
   @Input() clusterStyles: ClusterStyle[];
   @Input() markers: Marker[] = [];
   @ViewChild('agmMap', { static: false }) agmMap: AgmMap;

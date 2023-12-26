@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { data } from '../../data/data';
 
 @Component({
   selector: 'ps-footer',
@@ -8,11 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FooterComponent implements OnInit {
   @Input() showAddress: boolean;
 
-  mobile = '3114386970';
-  phone = '+57-0317037907';
+  landlinePhone = data.landlinePhone;
+  mobile = data.phone;
+  phoneShort = data.phoneShort;
+
   lat = 4.6651519;
   lng = -74.058919;
-  urlToRedirectGoogleMaps = `https://www.google.com/maps/place/Cra.+14+%23%2379-28,+Bogot%C3%A1/@${this.lat},${this.lng},17z/data=!3m1!4b1!4m5!3m4!1s0x8e3f9a5f748cde5f:0x76fcf58e20ef66b1!8m2!3d4.6651457!4d-74.0567303`;
+  urlToRedirectGoogleMaps = `https://maps.app.goo.gl/7AXKsv2ULACLTByU9`;
 
   constructor() {}
 

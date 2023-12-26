@@ -4,6 +4,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { CallToActionsService } from 'src/app/services/call-to-actions.service';
 import { IpService } from 'src/app/services/ip.service';
 import { Router } from '@angular/router';
+import { data } from '../../data/data';
 
 @Component({
   selector: 'ps-main',
@@ -13,9 +14,14 @@ import { Router } from '@angular/router';
 export class MainComponent implements OnInit {
   document: any;
   dataIp: any;
-  phone = '3114386970';
-  phoneShort = '311 438 69 70';
-  phoneWhatsapp = '573114386970';
+
+  phone = data.phone;
+  phoneShort = data.phoneShort;
+  phoneWhatsapp = data.phoneWhatsapp;
+
+  phoneMedellin = data.phoneMedellin;
+  phoneShortMedellin = data.phoneShortMedellin;
+  phoneWhatsappMedellin = data.phoneWhatsappMedellin;
 
   readonly BASE_CLASS_TEXT = '.data-card';
   readonly BASE_CLASS_IMAGE = '.ps-image-card';
@@ -64,9 +70,9 @@ export class MainComponent implements OnInit {
         this.href.indexOf('bogota') !== -1 || this.href === '/' ? true : false;
 
       if (!this.isBogota) {
-        this.phone = '3114386970';
-        this.phoneShort = '311 438 69 70';
-        this.phoneWhatsapp = '573114386970';
+        this.phone = this.phoneMedellin;
+        this.phoneShort = this.phoneShortMedellin;
+        this.phoneWhatsapp = this.phoneWhatsappMedellin;
       }
     }
   }

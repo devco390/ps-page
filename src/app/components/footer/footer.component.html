@@ -1,59 +1,29 @@
 <footer class="ps-footer">
   <div class="ps-footer__wrapper">
-    <div
-      class="ps-footer__important-information"
-      itemscope
-      itemtype="http://schema.org/LocalBusiness"
-    >
+    <div class="ps-footer__important-information" itemscope itemtype="http://schema.org/LocalBusiness">
       <h4>INFORMACIÓN DE CONTACTO</h4>
       <div class="ps-footer__important-information__item">
         <i class="icon icon-phone"></i>
         <label class="ps-footer__copyright">
-          <a href="tel:{{ mobile }}" target="_blank" itemprop="telephone"
-            >311 438 69 70</a
-          ></label
-        >
+          <a href="tel:{{ mobile }}" target="_blank" itemprop="telephone">{{phoneShort}}</a></label>
       </div>
-      <a
-        class="ps-footer__important-information__item"
-        itemprop="address"
-        href="mailto:comercial@printingsolutions.com.co"
-        target="_blank"
-        itemscope
-        itemtype="http://schema.org/PostalAddress"
-      >
+      <a class="ps-footer__important-information__item" itemprop="address"
+        href="mailto:comercial@printingsolutions.com.co" target="_blank" itemscope
+        itemtype="http://schema.org/PostalAddress">
         <i class="icon icon-email"></i>
-        <label class="ps-footer__copyright" itemprop="email"
-          >comercial@printingsolutions.com.co</label
-        >
+        <label class="ps-footer__copyright" itemprop="email">comercial@printingsolutions.com.co</label>
       </a>
-      <a
-        class="ps-footer__important-information__item"
-        itemprop="address"
-        href="{{ urlToRedirectGoogleMaps }}"
-        target="_blank"
-        itemscope
-        itemtype="http://schema.org/PostalAddress"
-        *ngIf="showAddress"
-      >
+      <a class="ps-footer__important-information__item" itemprop="address" href="{{ urlToRedirectGoogleMaps }}"
+        target="_blank" itemscope itemtype="http://schema.org/PostalAddress" *ngIf="showAddress">
         <i class="icon icon-location"></i>
-        <label class="ps-footer__copyright" itemprop="streetAddress"
-          >Carrera 14 # 79 28 - oficina 303, Bogotá, Colombia</label
-        >
+        <label class="ps-footer__copyright" itemprop="streetAddress">Carrera 19a # 79 18 - Oficina 508, Bogotá,
+          Colombia</label>
       </a>
-      <a
-        class="ps-footer__important-information__item"
-        itemprop="address"
-        href="https://goo.gl/maps/98q4MaRaGRiqH94v9"
-        target="_blank"
-        itemscope
-        itemtype="http://schema.org/PostalAddress"
-        *ngIf="!showAddress"
-      >
+      <a class="ps-footer__important-information__item" itemprop="address"
+        href="https://maps.app.goo.gl/7AXKsv2ULACLTByU9" target="_blank" itemscope
+        itemtype="http://schema.org/PostalAddress" *ngIf="!showAddress">
         <i class="icon icon-location"></i>
-        <label class="ps-footer__copyright" itemprop="streetAddress"
-          >Servicio a domicilio en todo Medellín</label
-        >
+        <label class="ps-footer__copyright" itemprop="streetAddress">Servicio a domicilio en todo Medellín</label>
       </a>
     </div>
 
